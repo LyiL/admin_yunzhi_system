@@ -1,0 +1,31 @@
+<!--<pro-header></pro-header>-->
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="10">
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label for="roleName">{{'RM.listPage.search.roleName'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="rmListForm.roleName" name="roleName" [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="name"></nz-input>
+                    </div>
+                </div>
+            </div>
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+                <button nz-button  [nzSize]="'large'" [nzType]="'default'" (click)="Onaddrole()" *ngIf="helper.btnRole('ARCREATE')">
+                    <span>{{'RM.listPage.html.add'|translate}}</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</nz-card>
+<nz-card [nzBordered]="false">
+    <simple-table #roleManageListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName" [reqReName]="tableCfg.reqReName" [isAjax]="tableCfg.isAjax"></simple-table>
+</nz-card>

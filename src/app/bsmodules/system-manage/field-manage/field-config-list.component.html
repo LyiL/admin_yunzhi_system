@@ -1,0 +1,92 @@
+<nz-card>
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+
+            <!-- 配置名称 -->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label for="confName">{{'fieldConfig.listPage.search.confName'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="fieldForm.confName"
+                                  name="confName"
+                                  nzId="confName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 配置编码 -->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label for="confCode">{{'fieldConfig.listPage.search.confCode'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="fieldForm.confCode"
+                                  name="confCode"
+                                  nzId="confCode"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 配置类型 -->
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label>{{'fieldConfig.listPage.search.confType'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-select nzAllowClear
+                                   nzId="confType"
+                                   name="confType"
+                                   [(ngModel)]="fieldForm.confType"
+                                   nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                            <nz-option nzLabel="{{'Select.all'|translate}}"></nz-option>
+                            <nz-option
+                                *ngFor="let confType of _confType | async"
+                                [nzLabel]="confType.name"
+                                [nzValue]="confType.id">
+                            </nz-option>
+                        </nz-select>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item>
+                    <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                        <span>{{'default.btn.searchBtn'|translate}}</span>
+                    </button>
+                    <button nz-button [nzType]="'default'" [style.display]="_display ? 'none' : 'normal'"  (click)="onAdd()" [nzSize]="'large'" *ngIf="helper.btnRole('AFCFGADD')">
+                        <span>{{'fieldConfig.listPage.search.addField'|translate}}</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="false">
+    <simple-table #fieldCfgListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [isAjax]="tableCfg.isAjax"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName">
+
+        <!-- 配置值 -->
+        <ng-template st-row="confContentRender" let-item>
+            <span>{{!helper.isEmpty(item['confContent']) ? item['confContent'] : '/'}}</span>
+        </ng-template>
+
+    </simple-table>
+</nz-card>

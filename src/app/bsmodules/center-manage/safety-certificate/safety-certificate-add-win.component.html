@@ -1,0 +1,103 @@
+<form nz-form [formGroup]="modelGroup" (ngSubmit)="_submitForm()">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col  [nzSpan]="6"><label for="certType" nz-form-item-required>{{'CenterManger.SCManage.scAdd.certType'|translate}}</label></div>
+        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+            <nz-select nzId="certType" name="certType" [(ngModel)]="model.certType"  (nzSelectChange)="onCertTypeSelected($event)"
+                       formControlName="certType" [nzSize]="'large'"
+                       nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                <nz-option
+                    *ngFor="let Types of certTypes"
+                    [nzLabel]="Types.name"
+                    [nzValue]="Types.id">
+                </nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('certType').dirty&&getFormControl('certType').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row  *ngIf="!isHide">
+        <div nz-form-label nz-col  [nzSpan]="6">
+            <label for="centerId" nz-form-item-required>{{'CenterManger.SCManage.scAdd.centerId'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="18" >
+            <search-input [(ngModel)]="model.centerId"
+                          formControlName="centerId"
+                          (nzSelect)="onSelected($event)"
+                          [name]="'centerId'" [nzSize]="'large'"
+                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}" nzId="centerId"
+                          [tableCfg]="CenterIdTableCfg"
+                          [displayField]="'name'"
+                          [valueField]="'name'"
+            ></search-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label for="thridMerchantNo" *ngIf="model.certType == '1'" nz-form-item-required>{{'CenterManger.SCManage.scAdd.thridMerchantNo'|translate}}</label>
+            <label for="thridMerchantNo" >{{'CenterManger.SCManage.scAdd.thridMerchantNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="thridMerchantNo"
+                      nzId="thridMerchantNo"
+                      name="thridMerchantNo"
+                      [(ngModel)]="model.thridMerchantNo"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('thridMerchantNo').dirty&&model.certType == '1'&&getFormControl('thridMerchantNo').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'CenterManger.SCManage.scAdd.certPwd'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="certPwd"
+                      [nzType]="'password'"
+                      nzId="certPwd"
+                      name="certPwd"
+                      [(ngModel)]="model.certPwd"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('certPwd').dirty&&getFormControl('certPwd').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <!--<div nz-form-explain *ngIf="getFormControl('certPwd').dirty&&getFormControl('certPwd').hasError('minlength')">{{'CenterManger.tips.Pwdminlength'|translate}}</div>-->
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label for="refundUserId">{{'CenterManger.SCManage.scAdd.refundUserId'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="refundUserId"
+                      nzId="refundUserId"
+                      name="refundUserId"
+                      [(ngModel)]="model.refundUserId"></nz-input>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label for="refundUserPwd">{{'CenterManger.SCManage.scAdd.refundUserPwd'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      [nzType]="'password'"
+                      nzId="refundUserPwd"
+                      name="refundUserPwd"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="refundUserPwd"
+                      [(ngModel)]="model.refundUserPwd"></nz-input>
+            <!--<div nz-form-explain *ngIf="getFormControl('refundUserPwd').dirty&&getFormControl('refundUserPwd').hasError('minlength')">{{'CenterManger.tips.Pwdminlength'|translate}}</div>-->
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!modelGroup.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>
+

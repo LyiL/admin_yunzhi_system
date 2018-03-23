@@ -1,0 +1,24 @@
+<form nz-form>
+    <h4>{{uploadResult}}</h4>
+    <h6>{{'WxPublicAuth.win.fileSelectTip' | translate}}</h6>
+    <h6>{{'WxPublicAuth.win.fileTypeTip' | translate}}</h6>
+
+    <ng-file-upload #followCodeUpload
+                    [options]="defFieldUploadSetting"
+                    class="visible-hide"
+                    (onUpload)="onUploadFile($event)"
+                    (onError)="onFileUploadError($event)"
+                    [events]="onUpload"></ng-file-upload>
+
+    <div nz-form-item nz-row class="upload-row">
+        <div nz-form-control nz-col class="wrap-btn">
+            <button nz-button [nzType]="'primary'" nzSize="large" (click)="onSelectFile()">
+                <span>{{'WxPublicAuth.win.uploadPicBtn' | translate}}</span>
+            </button>
+
+            <button nz-button [nzType]="'primary'" nzSize="large" (click)="_submitForm()">
+                <span>{{'WxPublicAuth.win.uploadNowBtn' | translate}}</span>
+            </button>
+        </div>
+    </div>
+</form>

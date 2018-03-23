@@ -1,0 +1,53 @@
+/**
+ *  公众号授权语言包
+ *  Created by hux on 2018/3/1
+ */
+export const WX_PUBLIC_AUTH_LANG = {
+    "WxPublicAuth":{
+        "listPage":{
+            "title":"公众号授权",
+            "search":{
+                "name":"公众账号名称",
+                "nickName":"授权方昵称"
+            },
+            "tableCols":{
+                "name":"公众号名称",
+                "serviceTypeInfo":"授权公众号类型",
+                "verifyTypeInfo":"授权方认证类型",
+                "authTime":"授权时间",
+                "cancelTime":"取消授权时间"
+            },
+            "btn":{
+                "detailBtn":"查看详情",
+                "uploadBtn":"上传"
+            }
+        },
+        "detailPage":{
+            "title":"公众号授权详情",
+            "detail":{
+                "appid":"appid",
+                "host":"主服务域名",
+                "userName":"公众账号原始id",
+                "ALIAS":"授权方微信号",
+                "headImg":"授权方头像",
+                "funcInfo":"授权权限集",
+                "refreshToken":"刷新token",
+                "accessToken":"授权token",
+                "authTime":"授权时间",
+                "cancelTime":"取消授权时间"
+            }
+        },
+        "win":{
+            "followCodeTitle":"上传公众号二维码图片",
+            "uploadPicBtn":"图片上传",
+            "uploadNowBtn":"立即上传",
+            "fileEmptyTip":"文件未上传",
+            "fileHasTip":"文件已上传",
+            "fileSelectTip":"请点击【图片上传】选择文件上传",
+            "fileUploadTip":"请点击【立即上传】提交",
+            "fileTypeTip":"仅支持jpg/png格式的文件",
+            "uploadSucMsg":"文件上传成功",
+            "uploadErrMsg":"系统异常，请联系管理员"
+        }
+    }
+};

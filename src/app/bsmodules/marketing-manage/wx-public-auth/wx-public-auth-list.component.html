@@ -1,0 +1,83 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+            <!--公众账号名称-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'WxPublicAuth.listPage.search.name'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="wxPublicAuthForm.name"
+                                  name="name"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="name"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--授权方昵称-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'WxPublicAuth.listPage.search.nickName'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="wxPublicAuthForm.nickName"
+                                  name="nickName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="nickName"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="false">
+    <simple-table #wxPublicAuthListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax">
+
+        <!--授权方昵称渲染-->
+        <ng-template st-row="nickNameRender" let-item>
+            <ng-container>{{helper.isEmpty(item['nickName']) ? '/' : item['nickName']}}</ng-container>
+        </ng-template>
+
+        <!--授权公众号类型渲染-->
+        <ng-template st-row="serviceTypeInfoRender" let-item>
+            <ng-container>{{helper.isEmpty(item['serviceTypeInfo']) ? '/' : helper.dictTrans('WECHAT_TYPE',item['serviceTypeInfo'])}}</ng-container>
+        </ng-template>
+
+        <!--授权方认证类型渲染-->
+        <ng-template st-row="verifyTypeInfoRender" let-item>
+            <ng-container>{{helper.isEmpty(item['verifyTypeInfo']) ? '/' : helper.dictTrans('WECHAT_VERIFY',item['verifyTypeInfo'])}}</ng-container>
+        </ng-template>
+
+        <!--授权时间渲染-->
+        <ng-template st-row="authTimeRender" let-item>
+            <ng-container>{{helper.isEmpty(item['authTime']) ? '/' : (item['authTime']|date:'yyyy-MM-dd HH:mm:ss')}}</ng-container>
+        </ng-template>
+
+        <!--取消授权时间渲染-->
+        <ng-template st-row="cancelTimeRender" let-item>
+            <ng-container>{{helper.isEmpty(item['cancelTime']) ? '/' : (item['cancelTime']|date:'yyyy-MM-dd HH:mm:ss')}}</ng-container>
+        </ng-template>
+
+    </simple-table>
+</nz-card>
+
+
+
+

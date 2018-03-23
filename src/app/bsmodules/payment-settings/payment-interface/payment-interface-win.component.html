@@ -1,0 +1,90 @@
+<form nz-form [formGroup]="paymentInterfaceApplyForm" (ngSubmit)="_submitForm()">
+    <!--支付接口名称-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'PaymentInterface.listPage.search.transType'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="transType"
+                      [(ngModel)]="model.transType"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('transType').dirty&&getFormControl('transType').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('transType').dirty&&getFormControl('transType').hasError('maxlength')">
+                {{'PaymentInterface.win.transTypeLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--代码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'PaymentInterface.listPage.search.transId'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="transId"
+                      [(ngModel)]="model.transId"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('transId').dirty&&getFormControl('transId').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('transId').dirty&&getFormControl('transId').hasError('maxlength')">
+                {{'PaymentInterface.win.transIdLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--类型-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'PaymentInterface.listPage.search.apiType'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <nz-select nzId="apiType"
+                       name="apiType"
+                       [(ngModel)]="model.apiType"
+                       formControlName="apiType"
+                       [nzSize]="'large'"
+                       nzAllowClear
+                       nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                <nz-option *ngFor="let cApiType of apiTypes"
+                    [nzLabel]="cApiType.name"
+                    [nzValue]="cApiType.id">
+                </nz-option>
+            </nz-select>
+            <div nz-form-explain *ngIf="getFormControl('apiType').dirty&&getFormControl('apiType').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--所属机构-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'PaymentInterface.listPage.search.bankNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <search-input [(ngModel)]="model.bankNo"
+                          formControlName="bankNo"
+                          [nzSize]="'large'"
+                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                          [tableCfg]="bankNoCfg"
+                          [displayField]="'name'"
+                          [(displayValue)]="model.bankName"
+                          [valueField]="'orgNo'"></search-input>
+            <div nz-form-explain *ngIf="getFormControl('bankNo').dirty&&getFormControl('bankNo').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!paymentInterfaceApplyForm.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>

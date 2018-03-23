@@ -1,0 +1,98 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+            <!--第三方平台名称-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'WxDevPlatform.listPage.search.name'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="wxDevPlatformForm.name"
+                                  name="name"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="name"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--受理机构-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'WxDevPlatform.listPage.search.organNo'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <search-input [(ngModel)]="wxDevPlatformForm.organNo"
+                                      [name]="'organNo'"
+                                      nzId="organNo"
+                                      [nzSize]="'large'"
+                                      nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                      [displayField]="'name'"
+                                      [valueField]="'orgNo'"
+                                      [tableCfg]="organNoCfg"></search-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+                <button nz-button *ngIf="helper.btnRole('AWCREATE')" (click)="onAddPlatform()" [nzType]="'default'" [nzSize]="'large'">
+                    <!--*ngIf="helper.btnRole('AWCREATE')"-->
+                    <span>{{'default.btn.newBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="false">
+    <simple-table #wxDevPlatformListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax" [isExpand]="true">
+        <ng-template st-row="typeRender" let-item>
+            {{helper.isEmpty(item['type']) ? '/' : helper.dictTrans('OTO_WECHAT_AUTHORIZER_TYPE',item['type'])}}
+        </ng-template>
+        <ng-template st-row="remarkRender" let-item>
+            {{helper.isEmpty(item['remark']) ? '/' : item['remark']}}
+        </ng-template>
+        <ng-template st-row="createdAtRender" let-item>
+            {{helper.isEmpty(item['createdAt'])? '/' : (item['createdAt'] | date:'yyyy-MM-dd HH:mm:ss')}}
+        </ng-template>
+        <ng-template #nzTableExpand let-item let-index="index">
+            <ng-container *ngIf="item">
+                <ul class="wx-expand-info">
+                    <li>
+                        <label>{{'WxDevPlatform.listPage.expandFields.appsecret'|translate}}</label>
+                        <span>{{helper.isEmpty(item['appsecret']) ? '/' : item['appsecret']}}</span>
+                    </li>
+                    <li>
+                        <label>{{'WxDevPlatform.listPage.expandFields.host'|translate}}</label>
+                        <span>{{helper.isEmpty(item['host']) ? '/' : item['host']}}</span>
+                    </li>
+                    <li>
+                        <label>{{'WxDevPlatform.listPage.expandFields.authHost'|translate}}</label>
+                        <span>{{helper.isEmpty(item['authHost']) ? '/' : item['authHost']}}</span>
+                    </li>
+                    <li>
+                        <label>{{'WxDevPlatform.listPage.expandFields.aesKey'|translate}}</label>
+                        <span>{{helper.isEmpty(item['aesKey']) ? '/' : item['aesKey']}}</span>
+                    </li>
+                    <li>
+                        <label>{{'WxDevPlatform.listPage.expandFields.verifyTicket'|translate}}</label>
+                        <span>{{helper.isEmpty(item['verifyTicket']) ? '/' : item['verifyTicket']}}</span>
+                    </li>
+                </ul>
+            </ng-container>
+        </ng-template>
+    </simple-table>
+</nz-card>
+
+
+

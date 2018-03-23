@@ -1,0 +1,1631 @@
+{
+    "home": "首页",
+    "locale": "zh-CN",
+    "default": {
+        "btn": {
+            "searchBtn": "查询",
+            "backBtn": "返回",
+            "detailBtn": "详情",
+            "newBtn":"新增",
+            "editBtn":"编辑",
+            "delBtn":"删除",
+            "saveBtn":"保存",
+			"cancelBtn":"取消",
+            "confirmBtn":"确认"
+        },
+        "hint": {
+            "pleaseInput": "请输入",
+            "pleaseChoose": "请选择",
+            "hintInfo": "提示",
+            "saveSuccess": "保存成功",
+            "editSuccess": "编辑成功",
+            "changeSuccess":"变更成功",
+            "delSuccess":"删除成功"
+        },
+        "tableCol": {
+            "action": "操作"
+        }
+    },
+    "Pagination": {
+        "itemsPerPage": "%num% 条/页",
+        "jumpTo": "跳至",
+        "page": "页",
+        "forwardPage": "向前 %num% 页",
+        "backwardPage": "向后 %num% 页",
+        "prevPage": "上一页",
+        "nextPage": "下一页",
+        "firstPage": "第一页",
+        "lastPage": "最后一页: %page%",
+        "totalItems": "共 %total% 条"
+    },
+    "DateTime": {
+        "clear": "清除",
+        "chooseMonth": "选择月份",
+        "chooseYear": "选择年份",
+        "nYear": "%num%年",
+        "nMonth": "%num%月",
+        "nDay": "%num%日",
+        "prevYear": "上一年",
+        "nextYear": "下一年",
+        "prevMonth": "上个月",
+        "nextMonth": "下个月",
+        "prevDecade": "上一年代",
+        "nextDecade": "下一年代",
+        "chooseDecade": "选择年代",
+        "chooseTime": "选择时间",
+        "chooseDate": "选择日期",
+        "chooseTimePlease": "请选择时间",
+        "chooseDatePlease": "请选择日期",
+        "thisMoment": "此刻",
+        "today": "今天",
+        "ok": "确 定"
+    },
+    "Modal": {
+        "okText": "确定",
+        "cancelText": "取消",
+        "understood": "知道了"
+    },
+    "Table": {
+        "emptyText": "没有数据"
+    },
+    "Select": {
+        "notFoundContent": "无法找到"
+    },
+    "Transfer": {
+        "titles": ",",
+        "notFoundContent": "无匹配结果",
+        "searchPlaceholder": "请输入",
+        "itemUnit": "项目",
+        "itemsUnit": "项目"
+    },
+    "Login": {
+        "loginUser": "用户名",
+        "loginPass": "密码",
+        "captcha": "验证码",
+        "userError": "请输入用户名!",
+        "passError": "请输入密码!",
+        "rememberLable": "记住用户名",
+        "loginBtn": "登 录"
+    },
+    "SP": {
+        "listPage": {
+            "title":"服务商列表",
+            "search": {
+                "name": "服务商名称",
+                "chanCode": "服务商编号",
+                "parentChanCode": "所属上级",
+                "examState": "用户状态"
+            },
+            "parentChanCfg": {
+                "title": "查询所属上级",
+                "parentChanCode": "所属上级编号",
+                "parentChanName": "所属上级名称"
+            },
+            "tableCols": {
+                "name": "服务商名称",
+                "chanCode": "服务商编号",
+                "dealerInfoCount": "下属商户",
+                "bankName": "所属机构",
+                "parentChanName": "所属上级",
+                "isConfigChanRate": "渠道信息",
+                "examState": "用户状态"
+            }
+        },
+		"detailPage":{
+            "detail":{
+                "title":"详情",
+                "info":{
+                    "infoTitle":"基础信息",
+                    "enterpriseInform":"企业信息",
+                    "parentChanName":"所属上级",
+                    "name":"企业名称",
+                    "shortName":"企业简称",
+                    "chanCode":"服务商编号",
+                    "orgEmail":"企业邮箱",
+                    "provinceName":"所在地",
+                    "address":"经营地址",
+                    "certificateType":"商户证件类型",
+                    "linenceTermStart":"证件有效期",
+                    "categoryType":"所属行业",
+                    "orgWebsite":"企业网站",
+                    "customerPhone":"客服电话",
+                    "salesmanName":"所属业务员",
+                    "shareRule":"分润规则",
+                    "settleStyle":"结算方式",
+                    "registerTime":"创建时间",
+                    "examTime":"审核时间",
+                    "principalInfo":"负责人信息",
+                    "operator":"负责人姓名",
+                    "contactsType":"负责人类型",
+                    "operatorIdno":"身份证号",
+                    "operatorPhone":"负责人电话",
+                    "operatorEmail":"负责人邮箱",
+                    "contactInfo":"联系人信息",
+                    "linkman":"联系人姓名",
+                    "email":"联系人邮箱",
+                    "phone":"联系人手机",
+                    "accessoryInfo":"附件信息",
+                    "linenceImg":"营业执照",
+                    "orgAccountImg":"开户许可证",
+                    "indentityImg":"法人身份证-正面",
+                    "indentityBackImg":"法人身份证-反面",
+                    "bankCardImg":"银行卡照"
+                },
+                "accountInfo":"账户信息",
+                "accountTable":{
+                    "name":"开户名称",
+                    "type":"账户类型",
+                    "bankCardno":"银行账号",
+                    "bankName":"开户行",
+                    "subbranchName":"开户支行",
+                    "subbanrchCode":"联行号",
+                    "transId":"支付类型",
+                    "cardType":"行内帐户"
+                }
+            },
+            "openProduct":{
+                "title":"开通产品",
+                "sTitle":"产品信息",
+                "prodTable":{
+                    "combName":"产品名称",
+                    "combNo":"产品代码",
+                    "state":"开通状态"
+                },
+                "prodDetail":{
+                    "transId":"支付类型",
+                    "categoryType":"行业类别",
+                    "limitDay":"单日限额（元）",
+                    "limitSingleMin":"单笔最小",
+                    "limitSingle":"单笔最大",
+                    "settleRate":"费率(‰)",
+                    "fixFloatRate":"费率类型",
+                    "settleCycle":"结算/分润周期",
+                    "shareRule":"分润规则",
+                    "used":"状态",
+                    "editCommitBtn":"编辑提交",
+                    "closeProdBtn":"关闭产品",
+                    "openProdBtn":"开通产品",
+                    "passBtn":"通过",
+                    "rejectBtn":"拒绝",
+                    "anewOpen":"重新开通"
+                },
+                "hint":{
+                    "closeProdHint":"您有编辑过的数据，是否需要先提交",
+                    "closeProdSuccess":"产品关闭成功！"
+                }
+            },
+            "channelCfg":{
+                "title":"渠道配置",
+                "sTitle":"渠道信息",
+                "channelInfoTitle":"渠道详情",
+                "usedOk":"启用",
+                "usedNo":"停用",
+                "channelTable":{
+                    "transId":"支付类型",
+                    "ptCenterId":"通道类型",
+                    "providerNo":"渠道编号",
+                    "used":"启用状态",
+                    "settleCycle":"结算周期",
+                    "settleRate":"结算费率(‰)"
+                },
+                "changeUsed":"您确认要变更当前状态吗",
+                "delChannelInfo":"您确认要删除本条未配置通道类型的渠道信息吗？",
+                "channelInfo":{
+                    "transType":"支付类型",
+                    "ptCenterName":"通道类型",
+                    "providerNo":"渠道编号",
+                    "thirdMchId":"第三方平台商户号",
+                    "pcmPartkey":"第三方平台商户号密钥",
+                    "used":"启用状态",
+                    "limitDay":"单日限额(元)",
+                    "limitSingle":"单笔最大限额(元)",
+                    "limitSingleMin":"单笔最小限额(元)",
+                    "thirdAppid":"商户APPID",
+                    "settleCycle":"结算周期",
+                    "settleRate":"结算费率(‰)"
+                }
+            },
+            "infoCfg":{
+                "title":"信息配置"
+            }
+        }
+    },
+    "Agency": {
+        "listPage": {
+            "title": "代理商列表",
+            "search": {
+                "name": "代理商名称",
+                "chanCode": "代理商编号",
+                "parentChanCode": "上级代理",
+                "examState": "用户状态",
+                "appCode": "代理类型",
+                "all":"全部"
+            },
+            "parentChanCfg": {
+                "title": "查询上级代理",
+                "parentChanCode": "上级代理编号",
+                "parentChanName": "上级代理名称"
+            },
+            "tableCols": {
+                "name": "代理商名称",
+                "chanCode": "代理商编号",
+                "appCode": "代理类型",
+                "agentRank": "级别",
+                "parentAgentName": "上级代理",
+                "childAgentCount": "下级代理",
+                "mchCount": "下属商户",
+                "examState": "用户状态"
+            },
+            "win":{
+               "title":"信息",
+                "subAgentCount":"下级代理总计数：",
+                "subMchCount":"下级商户总计数："
+            },
+            "subMchTableCols": {
+                "name": "商户名称",
+                "merchantNo": "商户编号",
+                "shortName": "商户简称",
+                "examState": "用户状态"
+            },
+            "btn": {
+                "addBtn": "新增代理商"
+            }
+        },
+        "detailPage":{
+            "detail":{
+                "title":"详情",
+                "info":{
+                    "infoTitle":"基础信息",
+                    "enterpriseInform":"企业信息",
+                    "parentChanName":"上级代理",
+                    "appCode":"代理类型",
+                    "name":"企业名称",
+                    "shortName":"企业简称",
+                    "chanCode":"代理商编号",
+                    "orgEmail":"企业邮箱",
+                    "provinceName":"所在地",
+                    "address":"经营地址",
+                    "certificateType":"商户证件类型",
+                    "linenceTermStart":"证件有效期",
+                    "categoryType":"所属行业",
+                    "orgWebsite":"企业网站",
+                    "customerPhone":"客服电话",
+                    "salesmanName":"所属业务员",
+                    "shareRule":"分润规则",
+                    "settleStyle":"结算方式",
+                    "registerTime":"创建时间",
+                    "examTime":"审核时间",
+                    "principalInfo":"负责人信息",
+                    "operator":"负责人姓名",
+                    "contactsType":"负责人类型",
+                    "operatorIdno":"身份证号",
+                    "operatorPhone":"负责人电话",
+                    "operatorEmail":"负责人邮箱",
+                    "contactInfo":"联系人信息",
+                    "linkman":"联系人姓名",
+                    "email":"联系人邮箱",
+                    "phone":"联系人手机",
+                    "accessoryInfo":"附件信息",
+                    "linenceImg":"营业执照",
+                    "orgAccountImg":"开户许可证",
+                    "indentityImg":"法人身份证-正面",
+                    "indentityBackImg":"法人身份证-反面",
+                    "bankCardImg":"银行卡照"
+                },
+                "accountInfo":"账户信息",
+                "accountTable":{
+                    "name":"开户名称",
+                    "type":"账户类型",
+                    "bankCardno":"银行账号",
+                    "bankName":"开户行",
+                    "subbranchName":"开户支行",
+                    "subbanrchCode":"联行号",
+                    "transId":"支付类型",
+                    "cardType":"行内帐户",
+                    "subbranchNameSearch":"查询开户支行"
+                }
+            },
+            "openProduct":{
+                "title":"开通产品",
+                "sTitle":"产品信息",
+                "prodTable":{
+                    "combName":"产品名称",
+                    "combNo":"产品代码",
+                    "state":"开通状态"
+                },
+                "prodDetail":{
+                    "transId":"支付类型",
+                    "categoryType":"行业类别",
+                    "limitDay":"单日限额（元）",
+                    "limitCount":"单笔限额（元）",
+                    "limitSingleMin":"单笔最小",
+                    "limitSingle":"单笔最大",
+                    "settleRate":"费率(‰)",
+                    "fixFloatRate":"费率类型",
+                    "settleCycle":"结算/分润周期",
+                    "shareRule":"分润规则",
+                    "used":"状态"
+                }
+            },
+            "channelCfg":{
+                "title":"渠道配置",
+                "channelTable":{
+                    "transId":"支付类型",
+                    "categoryType":"行业类别",
+                    "centerId":"通道类型",
+                    "providerNo":"渠道编号"
+                }
+            }
+        }
+    },
+    "RefundSets": {
+        "listPage": {
+            "title": "退款设置",
+            "search": {
+                "name": "商户名称",
+                "merchantNo": "商户编号"
+            },
+            "tableCols": {
+                "name": "商户名称",
+                "merchantNo": "商户编号",
+                "chanName": "所属渠道",
+                "examState": "审核状态",
+                "activeState": "激活状态"
+            },
+            "btn": {
+                "refundStrategy": "退款策略",
+                "refundAuthority": "退款权限"
+            }
+        },
+        "refStrategyPage": {
+            "title": "退款策略",
+            "tableCols": {
+                "merchantNo": "商户编号",
+                "transType": "支付类型",
+                "transId": "支付接口",
+                "refundDayRange": "允许退款天数",
+                "dayRefundCount": "当日退款笔数",
+                "singleRefundFee": "单笔退款额（元）",
+                "dayRefundFee": "当日退款额（元）",
+                "useState": "启用状态",
+                "createdTime": "开通时间"
+            },
+            "win": {
+                "name": "商户名称",
+                "transId": "支付类型",
+                "useState": "启用状态",
+                "refundDayRange": "允许退款天数",
+                "dayRefundCount": "当日退款笔数",
+                "singleRefundFee": "单笔退款金额",
+                "dayRefundFee": "当日退款金额"
+            },
+            "btn": {
+                "addBtn":"添加退款策略",
+                "editBtn": "编辑退款策略"
+            },
+            "message":{
+                "allType":"全部支付类型",
+                "refundDayRangeMsg":"商户允许退款天数不能大于90天！",
+                "dayRefundCountMsg":"商户当日退款笔数不能大于90笔！",
+                "singleRefundFeeMsg":"单笔退款不能大于当日退款金额！",
+                "saveOkMsg":"保存成功！"
+            },
+            "validationMessages":{
+                "refundDayRangeRequied":"【允许退款天数】不能为空",
+                "refundDayRangeNumber":"【允许退款天数】无效的数字",
+                "dayRefundCountRequied":"【当日退款笔数】不能为空",
+                "dayRefundCountNumber":"【当日退款笔数】无效的数字",
+                "singleRefundFeeRequied":"【单笔退款金额】不能为空",
+                "singleRefundFeeNumber":"【单笔退款金额】无效的数字",
+                "dayRefundFeeRequied":"【当日退款金额】不能为空",
+                "dayRefundFeeNumber":"【当日退款金额】无效的数字"
+            }
+        },
+        "refAuthPage": {
+            "title": "退款权限",
+            "tableCols": {
+                "merchantNo": "商户编号",
+                "transType": "支付类型",
+                "refundAuth": "退款权限",
+                "examType": "审核类型",
+                "addTime": "创建时间",
+                "isEnabled": "使用状态"
+            },
+            "win": {
+                "name": "商户名称",
+                "transId": "支付类型",
+                "refundAuth": "退款权限",
+                "examType": "审核类型"
+            },
+            "btn": {
+                "addBtn":"添加退款权限",
+                "editBtn": "编辑退款权限"
+            },
+            "message":{
+                "allType":"全部支付类型",
+                "refundAuthMsg":"请选择退款权限！",
+                "saveOkMsg":"保存成功！"
+            }
+        }
+    },
+    "IntoPieces": {
+        "listPage": {
+            "title": "进件列表",
+            "search": {
+                "name": "商户名称",
+                "merchantNo": "商户编号",
+                "applyState": "进件状态",
+                "superior": "所属上级",
+                "addBtn": "新增进件单"
+            },
+            "superiorCfg": {
+                "title": "所属上级",
+                "superior": "所属上级编号",
+                "superiorName": "所属上级名称"
+            },
+            "merchantCfg": {
+                "title": "商户名称",
+                "name": "商户名称",
+                "merchantCode": "商户编号"
+            },
+            "ptCenterCfg": {
+                "title": "通道类型",
+                "ptCenterId": "通道类型编号",
+                "ptCenterName": "通道类型名称"
+            },
+            "tableCols": {
+                "name": "商户名称",
+                "merchantCode": "商户编号",
+                "chanName": "所属上级",
+                "centerName": "通道类型",
+                "agencyName": "所属银行",
+                "providerNo": "渠道编号",
+                "applyState": "进件状态",
+                "ally": "商户识别码",
+                "intoBtn": "进件",
+                "againBtn": "重新进件"
+            },
+            "addWin": {
+                "title": "新增进件单",
+                "merchantId": "商户名称",
+                "transId": "支付类型",
+                "ptCenterId": "通道类型",
+                "providerNo": "渠道编号",
+                "saveBtn": "保存"
+            },
+            "editWin": {
+                "title": "编辑进件单",
+                "name": "商户名称",
+                "merchantCode": "商户编号",
+                "superiorName": "所属上级",
+                "ptCenterId": "通道类型",
+                "bankName": "所属银行",
+                "providerNo": "渠道编号",
+                "applyState": "进件状态",
+                "providerNo": "渠道编号",
+                "ally": "商户识别码",
+                "saveBtn": "保存"
+            },
+            "hint": {
+                "ptCenterId": "请选择通道类型！",
+                "intoSuccess": "进件成功"
+            }
+        }
+    },
+    "AccError": {
+        "listPage": {
+            "title": "差错异常",
+            "search": {
+                "dateTitle": "对账日期",
+                "checkTimeStart": "开始时间",
+                "checkTimeEnd": "结束时间",
+                "partner": "结算账户",
+                "handleState": "处理状态",
+                "orderNo": "平台单号",
+                "transactionId": "第三方订单号",
+                "refundNo": "退款单号",
+                "refundId": "第三方退款单号",
+                "hideBtn": "隐藏高级查询",
+                "showBtn": "显示高级查询"
+            },
+            "partnerCfg": {
+                "title": "结算账户",
+                "partner": "结算账户编号",
+                "partnerName": "结算账户名称"
+            },
+            "tableCols": {
+                "reconDay": "对账日期/结算账户",
+                "merchantName": "商户名称",
+                "totalFee": "交易金额（元）/退款金额（元）",
+                "orderNo": "平台单号/退款单号",
+                "transactionId": "第三方订单号/第三方退款单号",
+                "handleState": "处理状态"
+            }
+        },
+        "detailPage": {
+            "title": "详情页",
+            "detail": {
+                "id": "差错异常",
+                "reconDay": "对账日期",
+                "partner": "结算账户",
+                "agencyName": "受理机构",
+                "orderNo": "平台单号",
+                "transactionId": "第三方订单号",
+                "refundNo": "退款单号",
+                "refundId": "第三方退款单号",
+                "totalFee": "交易金额",
+                "refundFee": "退款金额",
+                "trdTotalFee": "第三方交易金额",
+                "trdRefundFee": "第三方退款金额",
+                "trdBillRate": "第三方记录的商户费率",
+                "trdPodg": "第三方手续费金额",
+                "errMsg": "差错信息",
+                "handleDay": "处理日期",
+                "handleDesc": "处理备注",
+                "handleState": "处理状态"
+            }
+        }
+    },
+    "AccSummary": {
+        "listPage": {
+            "title": "对账总览",
+            "search": {
+                "dateTitle": "对账日期",
+                "billTimeStart": "开始时间",
+                "billTimeEnd": "结束时间",
+                "ally": "结算账户",
+                "reconState": "对账状态",
+                "transId": "支付类型",
+                "centerId": "支付中心"
+            },
+            "allyCfg": {
+                "title": "结算账户",
+                "ally": "结算账户编号",
+                "allyName": "结算账户名称"
+            },
+            "centerCfg": {
+                "title": "支付中心",
+                "centerId": "支付中心编号",
+                "centerName": "支付中心名称"
+            },
+            "tableCols": {
+                "reconDay": "对账日期<br/>结算账户",
+                "totalFee": "交易金额（元）<br/>退款金额（元）",
+                "eqTotalFee": "平账交易金额（元）<br/>平账退款金额（元）",
+                "totalQua": "交易笔数（笔）<br/>退款笔数（笔）",
+                "errTotalQua": "异常笔数（笔）<br/>异常金额（元）",
+                "transName": "支付类型",
+                "reconState": "对账状态"
+            },
+            "panelCfg": {
+                "totalQua": "交易总数(笔)",
+                "totalFee": "交易金额(元)",
+                "refundQua": "退款总数(笔)",
+                "refundFee": "退款金额(元)",
+                "errTotalQua": "异常总数(笔)",
+                "errTotalFee": "异常金额(元)",
+                "tradeFee": "交易净额(元)",
+                "procsFeeEx": "手续费支出(元)",
+                "arriveFee": "到账金额(元)"
+            }
+        },
+        "detailPage": {
+            "title": "对账总览详情页",
+            "detail": {
+                "reconDay": "对账日期",
+                "ally": "结算账户",
+                "centerId": "支付中心",
+                "transName": "支付类型",
+                "agencyName": "受理机构",
+                "totalFee": "交易金额",
+                "refundFee": "退款金额",
+                "totalQua": "交易笔数",
+                "refundQua": "退款笔数",
+                "errTotalQua": "异常笔数",
+                "errTotalFee": "异常金额",
+                "eqTotalFee": "平账交易金额",
+                "eqRefundFee": "平账退款金额",
+                "poundage2": "手续费（四舍五入）",
+                "poundage6": "手续费（6位小数）",
+                "refundPodg2": "退款手续费（四舍五入）",
+                "refundPodg6": "退款手续费（6位小数）",
+                "trdTotalFee": "第三方交易金额",
+                "trdRefundFee": "第三方退款金额",
+                "trdTotalQua": "第三方成功笔数",
+                "trdRefundQua": "第三方退款笔数",
+                "trdPodg": "第三方手续费金额",
+                "trdFavRefundFee": "第三方退款手续费",
+                "trdRefundPodg": "第三方优惠成功总金额",
+                "trdFavTotalFee": "第三方优惠退款金额",
+                "reconState": "对账状态"
+            }
+        }
+    },
+    "BussinessCheck": {
+        "listPage": {
+            "title": "商户清分",
+            "search": {
+                "dateTitle": "对账日期",
+                "startAt": "开始时间",
+                "finishAt": "结束时间",
+                "ally": "结算账户",
+                "reconState": "对账状态",
+                "merchantNo": "商户名称",
+                "transId": "支付类型",
+                "centerId": "支付中心",
+                "secondMchNo": "下属门店"
+            },
+            "allyCfg": {
+                "title": "结算账户",
+                "ally": "结算账户编号",
+                "allyName": "结算账户名称"
+            },
+            "merchantCfg": {
+                "title": "商户名称",
+                "merchantNo": "商户编号",
+                "merchantName": "商户名称"
+            },
+            "centerCfg": {
+                "title": "支付中心",
+                "centerId": "支付中心编号",
+                "centerName": "支付中心名称"
+            },
+            "secondMchCfg": {
+                "title": "下属门店",
+                "secondMchNo": "下属门店编号",
+                "secondMchName": "下属门店名称"
+            },
+            "tableCols": {
+                "reconDay": "对账日期<br/>结算账户",
+                "merchantName": "商户名称",
+                "transName": "支付类型",
+                "totalFee": "交易金额（元）<br/>退款金额（元）",
+                "totalQua": "交易笔数（笔）<br/>退款笔数（笔）",
+                "eqTotalFee": "平账交易金额（元）<br/>平账退款金额（元）",
+                "poundage2": "手续费（元）<br/>退款手续费（元）",
+                "trdPodg": "第三方手续费（元）<br/>第三方退款手续费（元）",
+                "reconState": "对账状态"
+            }
+        },
+        "detailPage": {
+            "title": "详情页",
+            "detail": {
+                "reconDay": "对账日期",
+                "ally": "结算账户",
+                "agencyName": "受理机构",
+                "totalFee": "交易金额",
+                "refundFee": "退款金额",
+                "totalQua": "交易笔数",
+                "refundQua": "退款笔数",
+                "errTotalQua": "异常笔数",
+                "errTotalFee": "异常金额",
+                "eqTotalFee": "平账交易金额",
+                "eqRefundFee": "平账退款金额",
+                "poundage2": "手续费（四舍五入）",
+                "poundage6": "手续费（6位小数）",
+                "refundPodg2": "退款手续费（四舍五入）",
+                "refundPodg6": "退款手续费（6位小数）",
+                "trdTotalFee": "第三方交易金额",
+                "trdRefundFee": "第三方退款金额",
+                "trdTotalQua": "第三方成功笔数",
+                "trdRefundQua": "第三方退款笔数",
+                "trdPodg": "第三方手续费金额",
+                "trdRefundPodg": "第三方退款手续费",
+                "trdFavTotalFee": "第三方优惠成功总金额",
+                "trdFavRefundFee": "第三方优惠退款金额",
+                "reconState": "对账状态"
+            }
+        }
+    },
+    "Mch":{
+        "title":"商户列表",
+        "All":"全部",
+        "mchDetail":"商户详情",
+        "step":{
+            "title":"新增商户",
+            "baseInfo":{
+                "title":"基本信息",
+                "model":{
+                    "name":"企业名称",
+                    "chanNo":"所属上级",
+                    "agencyName":"所属银行",
+                    "shortName":"企业简称",
+                    "orgEmail":"企业邮箱",
+                    "orgWebsite":"企业网站",
+                    "Address":"所在地",
+                    "province":"省",
+                    "city":"市",
+                    "county":"区县",
+                    "comAddress":"经营地址",
+                    "certificateType":"商户证件类型",
+                    "linenceNo":"商户证件号码",
+                    "linenceTerm":"证件有效期",
+                    "linenceTermStart":"起始时间",
+                    "linenceTermEnd":"结束时间",
+                    "mchRole":"行业类别",
+                    "categoryTypeGroup":"所属行业",
+                    "customerPhone":"客服电话",
+                    "creator":"所属业务员",
+                    "operator":"负责人姓名",
+                    "operatorIdno":"身份证号",
+                    "operatorPhone":"负责人手机",
+                    "operatorEmail":"负责人邮箱",
+                    "contactsType":"负责人类型",
+                    "linkman":"联系人姓名",
+                    "phone":"联系人手机",
+                    "email":"联系人邮箱",
+                    "linenceImg":"营业执照",
+                    "orgAccountImg":"开户许可证",
+                    "indentityImg":"身份证正面",
+                    "indentityBackImg":"身份证背面",
+                    "bankCardImg":"银行卡照片"
+                }
+            },
+            "accountInfo":{
+                "title":"账户信息"
+            },
+            "productInfo":{
+                "title":"产品开通"
+            },
+            "channelInfo":{
+                "title":"渠道信息"
+            }
+        },
+        "listPage":{
+            "search":{
+                "name":"商户名称",
+                "merchantNo":"商户编号",
+                "examState":"用户状态",
+                "chanNo":"所属上级",
+                "ally":"商户识别码",
+                "centerId":"通道类型"
+            },
+            "ChanCfg":{
+                "title":"查询所属上级",
+                "chanNo":"所属上级编号",
+                "chanName":"所属上级名称"
+            },
+            "creatorCfg":{
+                "title":"查询所属业务员",
+                "salesmanId":"所属业务员编号",
+                "realName":"所属业务员名称"
+            },
+            "CenterCfg":{
+                "title":"查询通道类型",
+                "centerId":"通道类型编号",
+                "centerName":"通道类型名称"
+            },
+            "subBankCfg":{
+                "title":"查询开户支行",
+                "linkNo":"开户支行编号",
+                "subBankName":"开户支行名称"
+            },
+            "tableCols":{
+                "name":"商户名称",
+                "merchantNo":"商户编号",
+                "shortName":"商户简称",
+                "chanName":"所属上级",
+                "examState":"用户状态"
+            }
+        },
+        "detailPage":{
+            "detail":{
+                "title":"详情",
+                "info":{
+                    "infoTitle":"基础信息",
+                    "enterpriseInform":"企业信息",
+                    "chanName":"所属上级",
+                    "name":"企业名称",
+                    "shortName":"企业简称",
+                    "merchantNo":"商户编号",
+                    "orgEmail":"企业邮箱",
+                    "provinceName":"所在地",
+                    "address":"经营地址",
+                    "certificateType":"商户证件类型",
+                    "linenceNo":"商户证件编号",
+                    "linenceTermStart":"证件有效期",
+                    "categoryType":"所属行业",
+                    "orgWebsite":"企业网站",
+                    "customerPhone":"客服电话",
+                    "salesmanName":"所属业务员",
+                    "createdTime":"创建时间",
+                    "examTime":"审核时间",
+                    "principalInfo":"负责人信息",
+                    "operator":"负责人姓名",
+                    "contactsType":"负责人类型",
+                    "operatorIdno":"身份证号",
+                    "operatorPhone":"负责人电话",
+                    "operatorEmail":"负责人邮箱",
+                    "contactInfo":"联系人信息",
+                    "linkman":"联系人姓名",
+                    "email":"联系人邮箱",
+                    "phone":"联系人手机",
+                    "accessoryInfo":"附件信息",
+                    "linenceImg":"营业执照",
+                    "orgAccountImg":"开户许可证",
+                    "indentityImg":"法人身份证-正面",
+                    "indentityBackImg":"法人身份证-反面",
+                    "bankCardImg":"银行卡照"
+                },
+                "accountInfo":"账户信息",
+                "accountTable":{
+                    "name":"开户名称",
+                    "type":"账户类型",
+                    "bankCardno":"银行账号",
+                    "bankName":"开户行",
+                    "subbranchName":"开户支行",
+                    "subbanrchCode":"联行号",
+                    "transId":"支付类型",
+                    "cardType":"行内帐户"
+                },
+                "channelInfo":"渠道信息",
+                "channelTable":{
+                    "transId":"支付类型",
+                    "ptCenterId":"通道类型",
+                    "providerNo":"渠道编号",
+                    "applyState":"进件状态",
+                    "ally":"商户识别码",
+                    "thirdAppid":"商户APPID",
+                    "pcmPartkey":"商户密钥"
+                }
+            },
+            "openProduct":{
+                "title":"开通产品",
+                "titleInfo":"产品信息"
+            },
+            "channelCfg":{
+                "detailTitle":"渠道详情",
+                "title":"渠道配置",
+                "toAudit":"待进件",
+                "handing":"处理中",
+                "success":"进件成功",
+                "fail":"进件失败",
+                "riskCTR":"被风控"
+            },
+            "infoCfg":{
+                "title":"信息配置"
+            }
+        },
+        "btn":{
+            "searchBtn":"查询",
+            "addBtn":"新增商户",
+            "onAuthenticationBtn":"批量认证"
+        },
+        "tips":{
+            "onAuthenticationTips1":"必须选择待审核状态且所属上级不能为空！",
+            "onAuthenticationConfirm1":"您确定对",
+            "onAuthenticationConfirm2":"下的商户进行批量认证操作？",
+            "onAuthenticationTipsOk":"批量认证中，稍后请自行查询认证结果！"
+        }
+    },
+    "Settle":{
+        "title":"商户日结列表",
+        "All":"全部",
+        "tips":{
+            "SettlePay":"请选择结算账户"
+        },
+        "listPage":{
+            "win":{
+                "settleTitle":"打款标题",
+                "remark":"备注",
+                "btn":"提交",
+                "title":"结算打款"
+            },
+            "search":{
+                "dateTitle":"划账日期",
+                "searchType":"查询类型",
+                "beginTime":"起始日期",
+                "endTime":"结束日期",
+                "chanProNo":"所属服务商",
+                "merchantNo":"所属商户",
+                "ally":"结算账户",
+                "centerId":"支付中心",
+                "transId":"支付类型",
+                "cashState":"付款状态",
+                "cashCycle":"结算周期"
+            },
+            "ChanProNoCfg":{
+                "title":"查询服务商",
+                "chanProNo":"服务商编号",
+                "chanProName":"服务商名称"
+            },
+            "AllyCfg":{
+                "title":"查询结算账户",
+                "ally":"结算账户编号",
+                "allyName":"结算账户名称"
+            },
+            "CenterCfg":{
+                "title":"查询支付中心",
+                "centerId":"支付中心编号",
+                "centerName":"支付中心名称"
+            },
+            "MchCfg":{
+                "title":"查询商户",
+                "merchantNo":"所属商户编号",
+                "merchantName":"商户名称"
+            },
+            "Band":{
+                "title1":"交易笔数(笔)",
+                "title2":"交易金额(元)",
+                "title3":"退款笔数(笔)",
+                "title4":"退款金额(元)",
+                "title5":"交易净额(元)",
+                "title6":"商户总净额(元)",
+                "title7":"手续费总收入(元)",
+                "title8":"手续费总成本(元)",
+                "title9":"手续费净收入(元)"
+            },
+            "tableCols":{
+                "reconDay":"交易日期",
+                "merchantNo":"商户编号",
+                "merchantName":"商户名称",
+                "transName":"支付方式",
+                "totalQua":"交易笔数(笔)<br/>退款笔数(笔)",
+                "totalFee":"交易金额(元)<br/>退款金额(元)",
+                "price1":"手续费成本(元)<br/>手续费收入(元)",
+                "price2":"手续费收入(元)",
+                "trdSettleRate":"成本费率(‰)<br/>商户费率(‰)",
+                "cashTotalFee":"商户净额(元)",
+                "settleCycle":"周期",
+                "cashState":"状态"
+            }
+        },
+        "btn":{
+            "searchBtn":"查询",
+            "settlePayBtn":"结算打款",
+            "onExportBtn":"导出报表"
+        }
+    },
+    "channelDay":{
+        "title":"机构日结列表",
+        "All":"全部",
+        "listPage":{
+            "channelTab":{
+                "settleDay":"机构日结",
+                "settleDetail":"日结详细"
+
+            },
+            "win":{
+                "settleTitle":"打款标题",
+                "remark":"备注",
+                "btn":"提交",
+                "title":"结算打款"
+            },
+            "Band":{
+                "title1":"分润总额(元)",
+                "title2":"银行净收入(元)",
+                "title3":"渠道分润额(元)",
+                "title4":"技术服务费(元)",
+                "title5":"交易笔数(笔)",
+                "title6":"交易净额(元)",
+                "title7":"款项支出(元)"
+            },
+            "search":{
+                "dateTitle":"划账日期",
+                "dateTradeTitle":"交易日期",
+                "billTimeStart":"清算开始时间",
+                "billTimeEnd":"清算结束时间",
+                "canalNo":"机构名称",
+                "chanProNo":"服务商名称",
+                "cashType":"款项类型",
+                "transId":"支付类型",
+                "ally":"结算账户",
+                "merchantNo":"商户名称"
+            },
+            "CanalNoCfg":{
+                "title":"查询机构",
+                "canalNo":"机构编号",
+                "canalName":"机构名称"
+            },
+            "ChanProNoCfg":{
+                "title":"查询服务商",
+                "chanProNo":"服务商编号",
+                "chanProName":"服务商名称"
+            },
+            "AllyCfg":{
+                "title":"查询结算账户",
+                "ally":"结算账户编号",
+                "allyName":"结算账户名称"
+            },
+            "CenterCfg":{
+                "title":"查询支付中心",
+                "centerId":"支付中心编号",
+                "centerName":"支付中心名称"
+            },
+            "MchCfg":{
+                "title":"查询商户",
+                "merchantNo":"所属商户编号",
+                "merchantName":"商户名称"
+            },
+            "tableCols":{
+                "reconDay":"划账日期",
+                "canalName":"机构名称",
+                "transType":"支付类型",
+                "totalQua":"交易笔数(笔)",
+                "totalFee":"交易净额(元)",
+                "cashTotalFee":"分润总额(元)",
+                "cashType":"款项类型",
+                "cashState":"付款状态"
+            },
+            "tableDetailCols":{
+                "tradeTime":"交易日期",
+                "canalName":"机构名称<br/>商户名称",
+                "transType":"支付类型",
+                "atRate":"本级费率(‰)<br/>下级费率(‰)",
+                "difRate":"费率差(‰)",
+                "totalQua":"交易笔数(笔)",
+                "totalFee":"交易净额(元)",
+                "cashTotalFee":"款项支出",
+                "cashType":"款项类型"
+            }
+        },
+        "btn":{
+            "searchBtn":"查询",
+            "settlePayBtn":"结算打款",
+            "onExportBtn":"导出报表"
+        },
+        "DetailBtn":{
+            "searchBtn":"查询",
+            "settlePayBtn":"结算打款",
+            "onExportBtn":"导出报表"
+        },
+        "tips":{
+            "SettlePay":"请选择结算账户",
+            "onExport":"请选择机构名称"
+        }
+    },
+    "BatchSettle":{
+        "title":"批量结款列表",
+        "All":"全部",
+        "listPage":{
+            "search":{
+                "dateTitle":"结算日期",
+                "createTime":"结算日期",
+                "settleNo":"打款批次号",
+                "actType":"账户类型",
+                "specNo":"商户名称",
+                "ally":"结算账户",
+                "cardType":"行内账户",
+                "syncStatus":"同步状态",
+                "syncMode":"操作类型",
+                "finalState":"最终状态"
+            },
+            "Band":{
+                "title1":"出款总笔数(笔)",
+                "title2":"出款总金额(元)"
+            },
+            "AllyCfg":{
+                "title":"查询结算账户",
+                "ally":"结算账户编号",
+                "allyName":"结算账户名称"
+            },
+            "MchCfg":{
+                "title":"查询商户",
+                "specNo":"商户编号",
+                "specName":"商户名称"
+            },
+            "tableCols":{
+                "createTime":"结算日期",
+                "merchantName":"结算主体",
+                "bankBranchName":"银行名称(支行)",
+                "actName":"账户名",
+                "bankCardNo":"银行卡号",
+                "actType":"账户类型",
+                "cardType":"行内账户",
+                "cashTotalFee":"出款金额(元)",
+                "syncStatus":"结算状态",
+                "finalState":"最终状态"
+            },
+            "win":{
+                "status":{
+                    "active":"状态",
+                    "statusRemark":"备注"
+                }
+            }
+
+        },
+        "btn":{
+            "searchBtn":"查询",
+            "batchPayBtn":"批量打款",
+            "onUploadBtn":"上传",
+            "onSyncBtn":"同步",
+            "onExportBtn":"导出报表",
+            "QueryBill":"查单",
+            "settleMoney":"打款",
+            "changeStatusManual":"转为人工",
+            "changeStatusAuto":"转为自动",
+            "changeSettleStatus":"更改结算状态",
+            "onRemark":"查看备注"
+        },
+        "tipContent":{
+            "Upload":"您确定要上传结款信息？",
+            "UploadOk":"上传成功",
+            "Sync":"您确定要同步结款信息？",
+            "SyncOk":"同步成功",
+            "batchPay1":"最终状态必须选择未发起或失败或退款成功!",
+            "batchPay2":"请点击查询按钮获取数据!",
+            "batchPay3":"当前查询条件下无数据!",
+            "batchPayConfirm1":"确定对结算日期为",
+            "batchPayConfirm2":"搜索到的数据进行批量打款操作？",
+            "batchPayOk":"批量打款中，稍后请在列表中自行查询打款结果！",
+            "QueryBill":"是否对本条数据发起查询?",
+            "QueryBillOk":"已发起查询",
+            "settleMoney":"是否对本条数据发起打款？",
+            "settleMoneyOk":"已发起打款",
+            "changeStatusAuto":"确定要转为自动操作？",
+            "changeStatusManual":"确定要转为人工操作？",
+            "changeStatusOk":"操作成功"
+        },
+        "winTitle":{
+            "SettleStatus":"结算状态",
+            "Remark":"备注"
+        }
+    },
+    "Salesman": {
+        "listPage": {
+            "title": "业务经理",
+            "search": {
+                "salesmanAccount": "业务员账号",
+                "realName": "业务员姓名",
+                "status": "激活状态"
+            },
+            "btn": {
+                "createBtn": "新增业务员",
+                "delBtn": "删除",
+                "pswBtn": "修改密码"
+            },
+            "tableCols": {
+                "mobile": "联系电话",
+                "branchBankNo": "分支机构号",
+                "empNo": "员工号",
+                "userName": "登录账号",
+                "createTime": "创建时间"
+            }
+        },
+        "win": {
+            "basic": {
+                "titleNew": "新增业务员",
+                "titleEdit": "编辑业务员",
+                "channelId": "上级代理",
+                "realName": "业务员姓名",
+                "mobile": "联系电话",
+                "branchBankNo": "分支机构号",
+                "empNo": "员工号",
+                "password": "登录密码",
+                "channelIdAlert":"上级代理不能为空",
+                "realNameAlert":"业务员姓名不能为空",
+                "mobileAlert":"联系电话不能为空",
+                "passwordAlert":"登录密码不能为空",
+                "passwordWarn":"密码长度不得少于6位"
+            },
+            "psw": {
+                "title": "修改密码",
+                "username": "用户名",
+                "newPassword": "新密码",
+                "newPasswordAlert":"新密码不能为空",
+                "newPasswordWarn":"密码长度不得少于6位"
+            },
+            "status": {
+                "active": "状态",
+                "statusRemark": "备注",
+                "statusRemarkAlert":"备注信息不能为空"
+            },
+            "message": {
+                "success": "操作成功"
+            },
+            "del": {
+                "no": "激活状态下不能删除",
+                "confirm": "删除后数据不可逆，确定删除？"
+            }
+        },
+        "detailPage": {
+            "title": "业务员详情",
+            "detail": {
+                "realName": "业务员姓名",
+                "mobile": "电话",
+                "branchBankNo": "分支机构号",
+                "salesmanId": "业务员编号",
+                "status": "激活状态",
+                "statusRemark": "激活说明",
+                "createTime": "创建时间"
+            }
+        }
+    },
+    "TradeQuery": {
+        "listPage": {
+            "title":"交易查询",
+            "tabs": {
+                "batch": "批量查询",
+                "order": "订单号查询"
+            },
+            "counts": {
+                "tradeNum": "交易总数(笔)",
+                "money": "交易金额(元)",
+                "refundNum": "退款总数(笔)",
+                "refundFee": "退款金额(元)"
+            },
+            "search": {
+                "tradeTime": "交易时间",
+                "tradeTimeStart": "开始时间",
+                "tradeTimeEnd": "结束时间",
+                "tradeState": "交易状态",
+                "agentno": "所属上级",
+                "merchantNo": "商户名称",
+                "tradeMoney": "交易金额",
+                "minMoney": "最小交易金额(元)",
+                "maxMoney": "最大交易金额(元)",
+                "secondMchNo": "下属门店",
+                "centerId": "支付中心",
+                "transId": "支付类型",
+                "termno": "终端编号",
+                "orderNo": "平台单号",
+                "outTradeNo": "商户单号",
+                "transactionId": "支付单号"
+            },
+            "agentnoCfg": {
+                "title": "查询所属上级",
+                "agentno": "所属上级编号",
+                "agentname": "所属上级名称"
+            },
+            "merchantNoCfg": {
+                "title": "查询商户",
+                "merchantNo": "商户编号",
+                "merchantName": "商户名称"
+            },
+            "secondMchNoCfg": {
+                "title": "查询下属门店",
+                "secondMchNo": "下属门店编号",
+                "secondMchName": "下属门店名称"
+            },
+            "centerIdCfg": {
+                "title": "查询支付中心",
+                "centerId": "支付中心编号",
+                "centerName": "支付中心名称"
+            },
+            "btn": {
+                "showSeniorBtn": "显示高级查询",
+                "hideSeniorBtn": "隐藏高级查询"
+            },
+            "tableCols": {
+                "tradeTime": "交易时间",
+                "outTradeNo": "商户单号",
+                "orderNo": "平台单号",
+                "merchantName": "商户名称",
+                "transType": "支付类型",
+                "tradeState": "交易状态",
+                "tradeMoney": "交易金额(元)",
+                "refundMoney": "退款金额(元)"
+            },
+            "message":{
+                "moneyMessage":"最小交易金额不能超过最大交易金额！",
+                "orderFormMessage":"至少输入一个单号"
+            }
+        },
+        "detailPage": {
+            "detail": {
+                "orderNo": "订单号",
+                "outTradeNo": "商户单号",
+                "transactionId": "支付单号",
+                "appid": "APPID",
+                "subAppid": "子商户appid",
+                "merchantNo": "商户编号",
+                "merchantName": "商户名称",
+                "bankNo": "银行编号",
+                "chanNo": "代理商编号",
+                "chanName": "代理商名称",
+                "groupno": "商户组编号",
+                "deparno": "门店部门编号",
+                "openid": "openId",
+                "subOpenid": "子商户openid",
+                "transType": "支付类型",
+                "signType": "签名类型",
+                "reqtype": "请求类型",
+                "tradeState": "交易状态",
+                "notifyState": "通知状态",
+                "notifyTime": "成功通知时间",
+                "notifyUrl": "通知Url",
+                "messageCharset": "消息编码",
+                "tradeMoney": "交易金额(元)",
+                "refundMoney": "退款金额(元)",
+                "totalFee": "支付金额(元)",
+                "currency": "收款币种",
+                "cashCurrency": "现金支付币种",
+                "cashFee": "现金支付金额",
+                "termtype": "设备类型",
+                "termno": "设备号",
+                "operno": "收银员",
+                "shopno": "收银员门店编号",
+                "addTime": "添加时间",
+                "tradeTime": "交易时间",
+                "body": "产品名称",
+                "bankType": "付款银行",
+                "bankTypeNo": "付款银行编号",
+                "attach": "商户附加信息",
+                "deviceInfo": "设备信息",
+                "isSubscribe": "是否关注受理商户",
+                "subIsSubscribe": "子商户是否关注",
+                "couponFee": "优惠券金额",
+                "mchCreateIp": "商户服务器的ip",
+                "payCreateIp": "支付服务器的IP",
+                "return_url": "回调url"
+            }
+        }
+    },
+    "TradeRank": {
+        "listPage": {
+            "search": {
+                "billTime": "交易日期"
+            },
+            "tableCols": {
+                "billTime": "日结时间",
+                "mchName": "商户名称",
+                "totalCount": "成功笔数(笔)",
+                "totalFee": "交易金额(元)",
+                "avgFee": "平均交易金额(元)",
+                "thiTotalCountRatio": "交易量比率(%)",
+                "contrastYesterday": "对比昨日金额(元)"
+            }
+        }
+    },
+    "TradeRefund": {
+        "listPage": {
+            "title":"退款审核",
+            "search": {
+                "tradeTime": "申请时间",
+                "tradeTimeStart": "申请开始日期",
+                "tradeTimeEnd": "申请结束日期",
+                "refundNo": "退款单号",
+                "merchantExam": "商户审核",
+                "daemonAudit": "平台审核",
+                "refundSource": "退款来源",
+                "orderNo": "平台单号",
+                "transId": "支付类型",
+                "merchantNo": "商户名称"
+            },
+            "btn": {
+                "applyRefundBtn": "申请退款",
+                "reissueBtn": "重新发起",
+                "autoByPassBtn": "自动通过",
+                "auditByPassBtn": "审核通过",
+                "goBackBtn": "退回"
+            },
+            "message": {
+                "reissueConfirm": "这笔退款未确认，您确定需要重新发起吗？",
+                "reissueSuc": "已重新发起！",
+                "passConfirm": "您确认要审核当前退款订单吗？？",
+                "passSuc": "审核成功！",
+                "backConfirm": "您确认要退回当前退款订单吗？",
+                "backSuc": "已退回！"
+            },
+            "counts": {
+                "refundCount": "退款总数(笔)",
+                "refundFee": "退款金额(元)"
+            },
+            "merchantNoCfg": {
+                "title": "查询商户名称",
+                "merchantNo": "商户编号",
+                "merchantName": "商户名称"
+            },
+            "tableCols": {
+                "addTime": "申请时间",
+                "refundNo": "退款单号",
+                "orderNo": "平台单号",
+                "merchantName": "商户名称",
+                "transType": "支付类型",
+                "merchantExam": "商户审核状态",
+                "daemonAudit": "平台审核状态",
+                "refundFee": "退款金额(元)",
+                "refundState": "退款状态",
+                "riskCtr": "风控状态"
+            }
+        },
+        "win": {
+            "orderNo": "平台单号",
+            "availableFee": "可退金额",
+            "merchantNo": "商户名称",
+            "refundFee": "退款金额",
+            "mchRefuseReason": "退款事由",
+            "orderNoAlert":"平台单号不能为空",
+            "merchantNoAlert": "商户名称不能为空",
+            "refundFeeAlert": "退款金额不能为空",
+            "refundFeeMaxAlert":"退款金额不能大于可退金额",
+            "refundFeeMinAlert":"退款金额必须大于0",
+            "mchRefuseReasonAlert": "退款事由不能为空"
+
+        },
+        "detailPage": {
+            "title": "退款单详情",
+            "detail": {
+                "refundNo": "退款单号",
+                "outTradeNo": "商户单号",
+                "orderNo": "平台订单号",
+                "refundid": "第三方退款单号",
+                "transactionId": "第三方订单号",
+                "outRefundNo": "商户退款单号",
+                "refundChannel": "退款渠道",
+                "merchantNo": "商户编号",
+                "merchantName": "商户名称",
+                "transType": "支付类型",
+                "totalFee": "订单总额(元)",
+                "refundFee": "退款金额(元)",
+                "currency": "币种",
+                "addTime": "退款申请时间",
+                "merchantExam": "商户审核状态",
+                "orderState": "订单状态",
+                "merchantExamUser": "审核用户",
+                "mchReviewTime": "商户审核时间",
+                "mchRefuseReason": "商户退回原因",
+                "daemonAudit": "平台审核状态",
+                "ptReviewTime": "平台审核时间",
+                "refuseReason": "支付退回原因",
+                "refundState": "退款状态",
+                "refundTime": "退款审核时间",
+                "riskCtr": "风控状态",
+                "riskInfo": "风控信息描述",
+                "refundUser": "退款用户",
+                "refundSource": "退款来源",
+                "bankNo": "银行编码",
+                "groupno": "组编码",
+                "agentno": "代理商树编号",
+                "deparno": "门店部门编号",
+                "termtype": "终端类型",
+                "termno": "终端编号",
+                "operno": "操作员编号",
+                "storeno": "操作门店编号"
+            }
+        }
+    },
+    "RM":{
+        "listPage":{
+            "html":{
+                "title":"角色管理",
+                "add":"新增角色",
+                "rolez":"角色组",
+                "onlysev":"仅保存",
+                "Becareful":"注意",
+                "hintO":"各平台编辑角色时,暂时能选择该平台所有角色组",
+                "hintT":"但只有归属于平台员工角色组的角色,才可以分配给员工",
+                "hintS":"其他类型角色组暂未使用",
+                "serve":"保存",
+                "rolefuncp":"角色功能权限",
+                "multiselect":"（可多选）",
+                "pleasefunc":"请选择功能权限",
+                "savesuc":"保存成功",
+                "pleaserole":"请选择角色菜单权限",
+                "pleaseroleName":"请输入角色名称!",
+                "pleasedescription":"请输入角色描述!"
+
+            },
+            "search":{
+                "roleName":"角色名称"
+            },
+            "tableCols":{
+                "roleName":"角色名称",
+                "description":"角色描述",
+                "parentName":"所属角色组",
+                "createdTime":"创建时间"
+
+            },
+            "tableActionCfg":{
+                "edit":"编辑",
+                "del":"删除",
+                "editRole":"编辑角色",
+                "addRole":"新增角色"
+            },
+            "alert":{
+                "title":"您是否确认要删除该角色"
+            },
+            "navigate":{
+                "addrole":"新增角色"
+            }
+
+        },
+        "nzTitle":{
+            "step1Title":"基本信息",
+            "step2Title":"关联菜单权限",
+            "step3Title":"关联功能信息"
+        }
+
+    },
+    "StaffM":{
+        "listPage":{
+            "html":{
+                "title":"员工管理",
+                "add":"新增员工",
+                "normal":"正常",
+                "frozen":"冻结",
+                "distribution":"分配",
+                "updatePsd":"修改密码",
+                "pleaseallorole":"请选择该员工角色",
+                "save":"保存",
+                "cal":"取消",
+                "rolesuc":"角色分配成功",
+                "qus":"确定",
+                "savesuc":"提交成功",
+                "userName":"用户名",
+                "realName":"员工姓名",
+                "userPwd":"密码",
+                "phone":"联系电话",
+                "bank":"返回",
+                "onlysave":"仅保存",
+                "saverole":"保存并分配角色"
+            },
+            "search":{
+                "userName":"用户名",
+                "realName":"真实姓名",
+                "isEnabled":"使用状态"
+            },
+            "tableCols":{
+                "userName":"用户名",
+                "b":"密码",
+                "realName":"员工姓名",
+                "phone":"联系电话",
+                "allocation":"角色分配",
+                "isEnabled":"使用状态",
+                "enable":"启用",
+                "disable":"禁用"
+
+            },
+            "tableActionCfg":{
+                "edit":"编辑",
+                "del":"删除"
+
+            },
+            "alert":{
+                "psdModify":"修改密码",
+                "psdModifySU":"修改密码成功",
+                "qusdeluser":"您是否确认要删除该用户",
+                "prompt":"提示",
+                "qusupdate":"您确认要变更当前",
+                "status":"状态吗？",
+                "opsuc":"操作成功",
+                "enablesuc":"已启用",
+                "disablesuc":"已禁用"
+
+            },
+            "navigate":{
+                "addstaff":"新增员工",
+                "editstaff":"编辑员工",
+                "staffmanage":"员工管理"
+            }
+        },
+        "nzTitle":{
+            "step1Title":"基本信息",
+            "step2Title":"分配角色",
+            "step3Title":"成功"
+        }
+    },
+    "chantradeCountM":{
+        "listPage":{
+            "html":{
+                "title":"数据统计",
+                "data":"日期",
+                "exportReport":"导出报表"
+
+            },
+            "search":{
+                "startDate":"开始时间",
+                "endDate":"结束时间",
+                "type":"统计对象"
+            },
+            "tableCols":{
+                "id":"编号",
+                "name":"名称",
+                "exMchCnt":"进件商户数",
+                "actMchCnt":"激活商户数",
+                "totalCount":"交易笔数",
+                "totalFee":"交易额"
+
+            }
+        }
+    },
+    "staffPsd":{
+        "html":{
+            "userPwd":"重新设置密码",
+            "userPwdc":"再次确认密码",
+            "qus":"确定",
+            "cancel":"取消"
+        }
+    }
+}
+

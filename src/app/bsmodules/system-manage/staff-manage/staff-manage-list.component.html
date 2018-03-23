@@ -1,0 +1,122 @@
+<nz-card [nzBordered]="true">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+
+            <!-- 用户名 -->
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label for="userName">{{'staff.listPage.search.userName'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="staffForm.userName"
+                                  name="userName"
+                                  nzId="userName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 员工姓名 -->
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label for="realName">{{'staff.listPage.search.realName'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="staffForm.realName"
+                                  name="realName"
+                                  nzId="realName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 使用状态 -->
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label>{{'staff.listPage.search.isEnabled'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-select nzAllowClear
+                                   nzId="isEnabled"
+                                   name="isEnabled"
+                                   [(ngModel)]="staffForm.isEnabled"
+                                   nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                            <nz-option nzLabel="{{'Select.all'|translate}}"></nz-option>
+                            <nz-option
+                                *ngFor="let state of states"
+                                [nzLabel]="state.name"
+                                [nzValue]="state.id">
+                            </nz-option>
+                        </nz-select>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+                <button nz-button (click)="onAdd()" [nzType]="'default'" [nzSize]="'large'" *ngIf="helper.btnRole('ASCREATE')">
+                    <span>{{'staff.listPage.search.addStaff'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="true">
+    <simple-table #staffListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax">
+
+        <!-- 密码 -->
+        <ng-template st-row="userPwdRender" let-item>
+            <ng-container *ngIf="helper.btnRole('ASEDITPWD')">
+                <a (click)="onModifyPwd(item)">{{'staff.listPage.tableCols.modifyPwd' | translate}}</a>
+            </ng-container>
+            <ng-container *ngIf="!helper.btnRole('ASEDITPWD')"> / </ng-container>
+        </ng-template>
+
+        <!-- 联系电话 -->
+        <ng-template st-row="phoneRender" let-item>
+            <span>{{!helper.isEmpty(item['phone']) ? item['phone'] : '/'}}</span>
+        </ng-template>
+
+        <!-- 角色分配 -->
+        <ng-template st-row="roleAllotRender" let-item>
+            <ng-container *ngIf="helper.btnRole('ASDISTRIBUTION')">
+                <a (click)="onAllotRole(item)">{{'staff.listPage.tableCols.allot' | translate}}</a>
+            </ng-container>
+            <ng-container *ngIf="!helper.btnRole('ASDISTRIBUTION')"> / </ng-container>
+        </ng-template>
+
+        <!-- 状态 -->
+        <ng-template st-row="isEnabledRender" let-item let-index="index">
+            <ng-container *ngIf="helper.btnRole('ASEDITSTATUS')" [ngSwitch]="item['isEnabled']">
+                <nz-tag *ngSwitchCase="1" [nzColor]="'green'" (click)="onEnabled(item)">
+                    {{'staff.listPage.tableCols.normal'|translate}}
+                    <i class="anticon anticon-pause"></i>
+                </nz-tag>
+                <nz-tag *ngSwitchCase="0" [nzColor]="'red'" (click)="onEnabled(item)">
+                    {{'staff.listPage.tableCols.frozen'|translate}}
+                    <i class="anticon anticon-caret-right"></i>
+                </nz-tag>
+            </ng-container>
+            <ng-container *ngIf="!helper.btnRole('ASEDITSTATUS')" [ngSwitch]="item['isEnabled']">
+                <nz-tag> / </nz-tag>
+            </ng-container>
+        </ng-template>
+
+    </simple-table>
+</nz-card>

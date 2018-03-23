@@ -1,0 +1,83 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+            <!--支付渠道名称-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'PaymentChannel.listPage.search.routeChannelName'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="paymentChannelListForm.routeChannelName"
+                                  name="routeChannelName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="routeChannelName"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--支付渠道编码-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'PaymentChannel.listPage.search.routeChannelCode'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="paymentChannelListForm.routeChannelCode"
+                                  name="routeChannelCode"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="routeChannelCode"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+
+                <button nz-button (click)="onNewPaymentChannel()" [nzType]="'default'" [nzSize]="'large'" *ngIf="helper.btnRole('PAYCHANNELADD')">
+                    <span>{{'default.btn.newBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="false">
+    <simple-table #paymentChannelListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax">
+
+        <!--状态渲染-->
+        <ng-template st-row="stateRender" let-item>
+            <ng-container *ngIf="helper.btnRole('PAYCHANNELENABLE')" [ngSwitch]="item['state']">
+                <nz-tag *ngSwitchCase="0" [nzColor]="'red'" (click)="onUpdateState(item)">
+                    {{helper.dictTrans('ENABLE_STATUS', item['state'])}}
+                    <i class="anticon anticon-caret-right"></i>
+                </nz-tag>
+                <nz-tag *ngSwitchCase="1" [nzColor]="'green'" (click)="onUpdateState(item)">
+                    {{helper.dictTrans('ENABLE_STATUS', item['state'])}}
+                    <i class="anticon anticon-pause"></i>
+                </nz-tag>
+            </ng-container>
+
+            <ng-container *ngIf="!helper.btnRole('PAYCHANNELENABLE')" [ngSwitch]="item['state']">
+                <nz-tag *ngSwitchCase="0" [nzColor]="'red'">
+                    {{helper.dictTrans('ENABLE_STATUS', item['state'])}}
+                </nz-tag>
+                <nz-tag *ngSwitchCase="1" [nzColor]="'green'">
+                    {{helper.dictTrans('ENABLE_STATUS', item['state'])}}
+                </nz-tag>
+            </ng-container>
+        </ng-template>
+
+    </simple-table>
+</nz-card>
+
+

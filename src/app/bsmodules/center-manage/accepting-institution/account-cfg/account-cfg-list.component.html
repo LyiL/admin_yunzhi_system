@@ -1,0 +1,58 @@
+<nz-card [nzBordered]="true">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="25">
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label for="companion">{{'CenterManger.billCfg.listPage.companion'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="form.companion" name="companion" [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="companion"></nz-input>
+                    </div>
+                </div>
+            </div>
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label for="billType">{{'CenterManger.billCfg.listPage.billType'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-select nzId="billType" name="billType" [(ngModel)]="form.billType" nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                            <nz-option  nzLabel="{{'CenterManger.All'|translate}}"></nz-option>
+                            <nz-option
+                                *ngFor="let Type of billType"
+                                [nzLabel]="Type.name"
+                                [nzValue]="Type.id">
+                            </nz-option>
+                        </nz-select>
+                    </div>
+                </div>
+            </div>
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'CenterManger.btn.searchBtn'|translate}}</span>
+                </button>
+                <button nz-button  (click)="onAdd()" [nzType]="'default'" [nzSize]="'large'" *ngIf="helper.btnRole('AARCREATE')">
+                    <span>{{'CenterManger.btn.newBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+<nz-card [nzBordered]="true">
+    <simple-table #billCfgListTable [url]="tableCfg.url" [reqMehtod]="'POST'"  [extraParams]="tableCfg.params" [total]="tableCfg.total" [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName" [reqReName]="tableCfg.reqReName" [isAjax]="tableCfg.isAjax" >
+        <ng-template st-row="billTypeRender" let-item>
+            {{!helper.isEmpty(item['billType'])?helper.dictTrans('CHECK_TYPE',item['billType']) : '/'}}
+        </ng-template>
+        <ng-template st-row="downClassRender" let-item>
+            {{!helper.isEmpty(item['downClass'])?item['downClass'] : '/'}}
+        </ng-template>
+        <ng-template st-row="classParamsRender" let-item>
+            {{!helper.isEmpty(item['classParams'])?item['classParams'] : '/'}}
+        </ng-template>
+        <ng-template st-row="parseClassRender" let-item>
+            {{!helper.isEmpty(item['parseClass'])?item['parseClass'] : '/'}}
+        </ng-template>
+        <ng-template st-row="downTimeRender" let-item>
+            <span> {{!helper.isEmpty(item['downBegin'])?item['downBegin']  : '/'}} </span> -- <span> {{!helper.isEmpty(item['downEnd'])?item['downEnd'] : '/'}} </span>
+        </ng-template>
+    </simple-table>
+</nz-card>

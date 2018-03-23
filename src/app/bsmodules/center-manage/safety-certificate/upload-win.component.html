@@ -1,0 +1,32 @@
+<form>
+    <div>
+        <div class="ctupload--pl">
+        <div><span class="ctupload--fw">{{'CenterManger.SCManage.listPage.certSet'|translate}}:</span>
+            <span *ngIf="certStatus == 1">{{'CenterManger.SCManage.listPage.yes'|translate}}</span>
+            <span *ngIf="certStatus == 0">{{'CenterManger.SCManage.listPage.no'|translate}}</span>
+        </div>
+            <h4>{{'CenterManger.tips.cert'|translate}}</h4>
+        </div>
+        <div class="ctupload--mt15">
+            <ng-file-upload [options]="defFieldUploadSetting"
+                            placeholder="{{'CenterManger.SCManage.uploadC'|translate}}"
+                            #fileUpload
+                            (onUpload)="handleUpload($event)"
+                            [events]="onUpload"
+            >
+            </ng-file-upload>
+        </div>
+        <div class=" wrap-btn" >
+            <button nz-button [nzType]="'primary'" [nzSize]="'large'" (click)="fileUploads()"
+                    class="ctupload--margin">
+                <span>{{'CenterManger.SCManage.uploadC'|translate}}</span>
+            </button>
+            <button nz-button  nzSize="large" [nzType]="'default'" (click)="_submitForm()" >
+                <span>{{'CenterManger.SCManage.uploadBtn' | translate}}</span>
+            </button>
+        </div>
+
+    </div>
+
+</form>
+

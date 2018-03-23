@@ -1,0 +1,79 @@
+<form nz-form [formGroup]="jdMchTypeApplyForm" (ngSubmit)="_submitForm()">
+    <!--父级类型-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label>{{'JDMchType.win.parent'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16">
+            <search-input [(ngModel)]="jdMchTypeModel.parent"
+                          formControlName="parent"
+                          [nzSize]="'large'"
+                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                          [tableCfg]="parentCfg"
+                          [displayField]="'typeName'"
+                          [(displayValue)]="jdMchTypeModel.parentName"
+                          [valueField]="'typeNo'"></search-input>
+        </div>
+    </div>
+
+    <!--类型名称-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label nz-form-item-required>{{'JDMchType.listPage.search.typeName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="typeName"
+                      [(ngModel)]="jdMchTypeModel.typeName"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('typeName').dirty&&getFormControl('typeName').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('typeName').dirty&&getFormControl('typeName').hasError('maxlength')">
+                {{'JDMchType.win.typeNameLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--类型编码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label nz-form-item-required>{{'JDMchType.listPage.search.typeNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="typeNo"
+                      [(ngModel)]="jdMchTypeModel.typeNo"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('typeNo').dirty&&getFormControl('typeNo').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('typeNo').dirty&&getFormControl('typeNo').hasError('maxlength')">
+                {{'JDMchType.win.typeNoLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--关联商户行业类别编号-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label>{{'JDMchType.listPage.search.categoryNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16">
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="categoryNo"
+                      [(ngModel)]="jdMchTypeModel.categoryNo"></nz-input>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!jdMchTypeApplyForm.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>
+
+
+

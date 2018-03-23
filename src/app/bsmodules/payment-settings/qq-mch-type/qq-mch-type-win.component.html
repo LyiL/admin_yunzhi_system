@@ -1,0 +1,76 @@
+<form nz-form [formGroup]="qqMchTypeApplyForm" (ngSubmit)="_submitForm()">
+    <!--ULO商户类型编号-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label nz-form-item-required>{{'QQMchType.win.categoryNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="categoryNo"
+                      [(ngModel)]="qqMchTypeModel.categoryNo"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('categoryNo').dirty&&getFormControl('categoryNo').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--QQ商户类型编号-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label nz-form-item-required>{{'QQMchType.win.typeNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="typeNo"
+                      [(ngModel)]="qqMchTypeModel.typeNo"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('typeNo').dirty&&getFormControl('typeNo').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--QQ商户类型名称-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label nz-form-item-required>{{'QQMchType.win.typeName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="typeName"
+                      [(ngModel)]="qqMchTypeModel.typeName"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('typeName').dirty&&getFormControl('typeName').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('typeName').dirty&&getFormControl('typeName').hasError('maxlength')">
+                {{'QQMchType.win.typeNameLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--QQ父商户类型编号-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="8">
+            <label>{{'QQMchType.win.parent'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="16">
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="parent"
+                      [(ngModel)]="qqMchTypeModel.parent"></nz-input>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!qqMchTypeApplyForm.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>
+
+
+
+

@@ -1,0 +1,42 @@
+<form nz-form [formGroup]="paymentChannelApplyForm" (ngSubmit)="_submitForm()">
+    <!--支付渠道名称-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="7">
+            <label nz-form-item-required>{{'PaymentChannel.listPage.search.routeChannelName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="15" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="routeChannelName"
+                      [(ngModel)]="paymentChannelModel.routeChannelName"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('routeChannelName').dirty&&getFormControl('routeChannelName').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--支付渠道编码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="7">
+            <label nz-form-item-required>{{'PaymentChannel.listPage.search.routeChannelCode'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="15" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="routeChannelCode"
+                      [(ngModel)]="paymentChannelModel.routeChannelCode"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('routeChannelCode').dirty&&getFormControl('routeChannelCode').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!paymentChannelApplyForm.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>
+
+

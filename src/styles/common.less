@@ -1,0 +1,227 @@
+nz-card.ng-card-m{
+    margin:0 10px;
+}
+.ant-row{
+    padding:0 30px;
+}
+
+/*内容容器*/
+.content-warp{
+    padding:20px 0;
+}
+
+/**
+  统计面板样式
+ */
+.header-info {
+    position: relative;
+    text-align: center;
+    > em {
+        background-color: #e8e8e8;
+        position: absolute;
+        height: 56px;
+        width: 1px;
+        top: 0;
+        right: 0;
+    }
+}
+
+/**
+    时间控件分隔符样式
+ */
+.picker-split {
+    line-height: 28px;
+    padding: 0 10px;
+}
+.split-line-height {
+    line-height: 28px;
+}
+
+
+/**
+    基础信息表格样式
+ */
+.padding-form {
+    padding: 24px;
+}
+
+/**
+    移除input type="number"浏览器自带的上下箭头
+ */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+/**
+保存下一步按钮样式
+ */
+.wrap-btn {
+    padding: 20px 0;
+    text-align: center;
+    .margin-right-btn {
+        margin-right: 16px;
+    }
+}
+
+/**
+详情页面右上角状态标识样式
+ */
+.detail-user-state {
+    position: absolute;
+    z-index: 99999;
+    width: 92px;
+    height: 26px;
+    right: 90px;
+    top: 68px;
+    border-radius: 20px;
+    padding-left: 20px;
+    -webkit-box-shadow: inset 0 3px 3px rgba(0,0,0,10%);
+    -moz-box-shadow: inset 0 3px 3px rgba(0,0,0,10%);
+    box-shadow: inset 0 3px 3px rgba(0,0,0,10%);
+    /*正常#91de18*/
+    &.normal {
+        background: url('/webassets/images/normal.png') 10px 6px no-repeat;
+        background-color: #91de18;
+    }
+    /*待审核 #ffb400*/
+    &.pending {
+        background: url('/webassets/images/pending.png') 10px 6px no-repeat;
+        background-color: #ffb400;
+    }
+    /*未通过和接口冻结：#ed5565*/
+    &.fail-APIfreeze {
+        background: url('/webassets/images/failAPIfreeze.png') 10px 6px no-repeat;
+        background-color: #ed5565;
+    }
+    /*冻结：#535353*/
+    &.freeze {
+        background: url('/webassets/images/freeze.png') 10px 6px no-repeat;
+        background-color: #535353;
+    }
+    span {
+        color: #fff;
+        display: block;
+        width: 100%;
+        font-size: 14px;
+        text-align: center;
+        line-height: 26px;
+    }
+}
+
+/**
+操作记录框样式
+ */
+.operation_record_wrap{
+    padding: 10px 20px;
+    border:1px solid #e6eaed;
+    height: 200px;
+    overflow: hidden;
+    overflow-y: auto;
+    .record{
+        line-height: 35px;
+    }
+    span{margin-right:10px;}
+}
+
+/**
+模块管理样式
+ */
+.app-module-wrap {
+    .app-module-heand {
+        border-bottom: 1px solid #e7eaec;
+        padding-bottom: 20px;
+    }
+    .app-module-content {
+        overflow: hidden;
+        position: relative;
+        clear: both;
+        .app-module-tree {
+            width: 280px;
+            min-height: 661px;
+            float: left;
+            border-right: 1px solid #e7eaec;
+            padding: 10px 0;
+        }
+        .app-module-inputs {
+            padding: 10px 40px;
+            overflow: hidden;
+            .txt-left {
+                text-align: left;
+            }
+        }
+    }
+}
+
+/**
+参数配置（配置项值）的样式
+ */
+.autoHeight {
+    overflow: hidden;
+    width: 600px;
+    max-width: 600px;
+    height: auto;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+/**
+微信开发者平台展开详情数据的样式
+ */
+.wx-expand-info {
+    li {
+        line-height: 30px;
+        label{
+            font-weight: bold;
+            margin-right: 6px;
+        }
+    }
+}
+
+/**
+保存取消按钮父级样式
+ */
+.margin-top-btn{
+    margin-top: 50px;
+}
+
+/**
+角色菜单与内容间距
+ */
+.ml30{
+    margin-left: 30px;
+}
+
+/**
+星号样式设置
+ */
+.star{
+    color: red;
+    margin-right: 15px;
+}
+
+/**
+中心管理--安全证书
+ */
+.ctupload--pl{
+    padding-left: 25px;
+}
+.ctupload--fw{
+    font-weight: bold
+}
+.ctupload--mt15{
+    position: absolute;
+    visibility: hidden;
+}
+.ctupload--margin{
+    margin-top: -50px;
+    margin-right: 20px;
+}
+
+.ml-40 {
+    margin-left: 40px;
+}
+

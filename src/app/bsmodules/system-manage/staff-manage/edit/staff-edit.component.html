@@ -1,0 +1,120 @@
+<nz-card [nzBordered]="false" class="ng-card-m">
+    <form nz-form [formGroup]="staffFormGroup" class="padding-form">
+        <fieldset>
+
+            <div nz-row [nzGutter]="40" [nzType]="'flex'" [nzJustify]="'space-between'">
+
+                <!-- 用户名 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="userName" nz-form-item-required>{{'staff.editPage.userName' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'userName'"
+                                      [(ngModel)]="model.userName"
+                                      [nzDisabled]="!flag"
+                                      formControlName="userName"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                *ngIf="getFormControl('userName').dirty&&getFormControl('userName').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('userName').dirty&&getFormControl('userName').hasError('numberError')">
+                                {{'staff.hint.nameErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 密码 -->
+                <div nz-col [nzSpan]="12" *ngIf="flag">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="userPwd" nz-form-item-required>{{'staff.editPage.userPwd' | translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18">
+                            <nz-input [nzType]="'password'"
+                                      [nzSize]="'large'"
+                                      [nzId]="'userPwd'"
+                                      [(ngModel)]="model.userPwd"
+                                      formControlName="userPwd"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('userPwd').dirty&&getFormControl('userPwd').hasError('minlength')">
+                                {{'staff.modifyPwd.minLength' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 员工姓名 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="realName" nz-form-item-required>{{'staff.editPage.realName' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'realName'"
+                                      [(ngModel)]="model.realName"
+                                      formControlName="realName"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('realName').dirty&&getFormControl('realName').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 联系电话 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="phone">{{'staff.editPage.phone' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18">
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'phone'"
+                                      [(ngModel)]="model.phone"
+                                      formControlName="phone"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('phone').dirty&&getFormControl('phone').hasError('numberError')">
+                                {{'default.validationMessages.numberErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+        <div nz-form-item nz-row>
+            <div nz-form-control nz-col class="text-center">
+                <nz-button-group>
+                    <button nz-button [nzType]="'default'" nzSize="large" (click)="onBack()">
+                        <span>{{'default.btn.cancelBtn' | translate}}</span>
+                    </button>
+
+                    <button nz-button [nzType]="'primary'" nzSize="large" [nzLoading]="isLoad" (click)="onSaveAndAllot()" [disabled]='!staffFormGroup.valid'>
+                        <span>{{'staff.allotRole.saveAndAllot' | translate}}</span>
+                    </button>
+
+                    <button nz-button [nzType]="'default'" nzSize="large" [nzLoading]="isLoad" (click)="onSubmit()" [disabled]='!staffFormGroup.valid'>
+                        <span>{{'default.btn.saveBtn' | translate}}</span>
+                    </button>
+                </nz-button-group>
+            </div>
+        </div>
+    </form>
+</nz-card>
+
+

@@ -1,0 +1,49 @@
+<form nz-form  [formGroup]="roleAdd" class="margin-top-btn">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="9">
+            <label for="roleName" nz-form-item-required>{{this.i18n.fanyi('RM.listPage.tableCols.roleName')}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="6" nzHasFeedback>
+            <nz-input  nzSize="large" [nzType]="'text'"  formControlName="roleName" name="roleName" [(ngModel)]="model.roleName" required nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('roleName').dirty&&getFormControl('roleName').hasError('required')">{{this.i18n.fanyi('RM.listPage.html.pleaseroleName')}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="9">
+            <label for="description" nz-form-item-required>{{this.i18n.fanyi('RM.listPage.tableCols.description')}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="6" nzHasFeedback>
+            <nz-input  nzSize="large" [nzType]="'text'"  formControlName="description" name="description" [(ngModel)]="model.description" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"  required></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('description').dirty&&getFormControl('description').hasError('required')">{{this.i18n.fanyi('RM.listPage.html.pleasedescription')}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="9">
+            <label for="parentIds" nz-form-item-required>{{this.i18n.fanyi('RM.listPage.html.rolez')}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="6" nzHasFeedback>
+            <nz-select nzId="parentIds" nzSize="large" name="parentIds" formControlName="parentIds"  [(ngModel)]="model.parentIds" nzPlaceHolder="{{'RM.listPage.html.pleaseselect'|translate}}">
+                <nz-option
+                    *ngFor="let role of parentIdsDate"
+                    [nzLabel]="role.roleName"
+                    [nzValue]="role.rolecode">
+                </nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-control nz-col class="text-center">
+            <nz-button-group>
+                <button nz-button (click)="back()" nzSize="large">{{this.i18n.fanyi('default.btn.backBtn')}}</button>
+                <button nz-button [nzType]="'primary'" nzSize="large" (click)="onNextSetp()" [disabled]="!roleAdd.valid"  [nzLoading]="isLoading">{{this.i18n.fanyi('RM.nzTitle.step2Title')}}</button>
+                <button nz-button  nzSize="large" [nzType]="'defult'" (click)="onSubmit()" [disabled]="!roleAdd.valid"  [nzLoading]="_isLoading">{{this.i18n.fanyi('RM.listPage.html.onlysev')}}</button>
+            </nz-button-group>
+        </div>
+    </div>
+</form>
+<div class="border-top-1 mt-lg px-lg text-grey-dark">
+    <h4 class="h3 my-md">{{this.i18n.fanyi('RM.listPage.html.Becareful')}}</h4>
+    <p>{{this.i18n.fanyi('RM.listPage.html.hintO')}}</p>
+    <p>{{this.i18n.fanyi('RM.listPage.html.hintT')}}</p>
+    <p>{{this.i18n.fanyi('RM.listPage.html.hintS')}}</p>
+</div>

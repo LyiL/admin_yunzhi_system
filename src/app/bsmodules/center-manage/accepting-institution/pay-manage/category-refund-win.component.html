@@ -1,0 +1,118 @@
+<form nz-form [formGroup]="modelGroup" (ngSubmit)="_submitForm()">
+
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'CenterManger.payManage.refundCategory.limitDayRange'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      nzId="limitDayRange"
+                      name="limitDayRange"
+                      formControlName="limitDayRange"
+                      [(ngModel)]="model.limitDayRange"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('limitDayRange').dirty&&getFormControl('limitDayRange').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('limitDayRange').dirty&&getFormControl('limitDayRange').hasError('numberError')">
+                {{'default.validationMessages.numberErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'CenterManger.payManage.refundCategory.dayRefundCount'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="dayRefundCount"
+                      nzId="dayRefundCount"
+                      name="dayRefundCount"
+                      [(ngModel)]="model.dayRefundCount"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('dayRefundCount').dirty&&getFormControl('dayRefundCount').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('dayRefundCount').dirty&&getFormControl('dayRefundCount').hasError('numberError')">
+                {{'default.validationMessages.numberErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('dayRefundCount').dirty&&getFormControl('dayRefundCount').hasError('maxlength')">{{'CenterManger.tips.countLength'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'CenterManger.payManage.refundCategory.singleRefundFee'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="singleRefundFee"
+                      nzId="singleRefundFee"
+                      name="singleRefundFee"
+                      [(ngModel)]="model.singleRefundFee"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('singleRefundFee').dirty&&getFormControl('singleRefundFee').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('singleRefundFee').dirty&&getFormControl('singleRefundFee').hasError('numberError')">
+                {{'default.validationMessages.numberErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'CenterManger.payManage.refundCategory.dayRefundFee'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="dayRefundFee"
+                      nzId="dayRefundFee"
+                      name="dayRefundFee"
+                      [(ngModel)]="model.dayRefundFee"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('dayRefundFee').dirty&&getFormControl('dayRefundFee').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('dayRefundFee').dirty&&getFormControl('dayRefundFee').hasError('numberError')">
+                {{'default.validationMessages.numberErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col  [nzSpan]="6"><label for="state" nz-form-item-required>{{'CenterManger.payManage.refundCategory.state'|translate}}</label></div>
+            <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                <nz-select nzId="type" name="type" [(ngModel)]="model.state" formControlName="state" [nzSize]="'large'"
+                           nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                    <nz-option
+                        *ngFor="let state of states"
+                        [nzLabel]="state.name"
+                        [nzValue]="state.id">
+                    </nz-option>
+                </nz-select>
+                <div nz-form-explain *ngIf="getFormControl('state').dirty&&getFormControl('state').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+            </div>
+        </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label for="updateRemark">{{'CenterManger.payManage.refundCategory.updateRemark'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <nz-input  name="updateRemark"
+                       formControlName="updateRemark"
+                       [(ngModel)]="model.updateRemark"
+                       nzId="updateRemark"
+                       [nzType]="'textarea'" [nzRows]="'3'"
+                       nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+        </div>
+    </div>
+
+
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!modelGroup.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>
+

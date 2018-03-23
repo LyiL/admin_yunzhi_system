@@ -1,0 +1,205 @@
+<!--<nz-card [nzBordered]="false" nzTitle="{{ ('CenterManger.payManage.plusTitle'|translate) }}" class="ng-card-m">-->
+    <nz-card [nzBordered]="false"  class="ng-card-m">
+
+<form nz-form [formGroup]="modelGroup" (ngSubmit)="_submitForm()" class="padding-form">
+
+    <div nz-row [nzGutter]="50" [nzType]="'flex'" [nzJustify]="'space-between'">
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="transId" nz-form-item-required>{{'CenterManger.payManage.payPlus.transId'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <search-input [(ngModel)]="model.transId"
+                                  [name]="'transId'" [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                  nzId="transId"
+                                  formControlName="transId"
+                                  [tableCfg]="centerIdTableCfg"
+                                  [displayField]="'transType'"
+                                  [displayValue]="_transType"
+                                  (nzSelect)="onTransIdSelected($event)"
+                                  [valueField]="'id'"
+                    ></search-input>
+                    <div nz-form-explain *ngIf="getFormControl('transId').dirty&&getFormControl('transId').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12" >
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6"><label for="centerPattern" nz-form-item-required>{{'CenterManger.payManage.payPlus.centerPattern'|translate}}</label></div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-select nzId="centerPattern" name="centerPattern" [(ngModel)]="model.centerPattern" formControlName="centerPattern"
+                               nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                        <nz-option
+                            *ngFor="let type of centerPattern"
+                            [nzLabel]="type.name"
+                            [nzValue]="type.id">
+                        </nz-option>
+                    </nz-select>
+                    <div nz-form-explain *ngIf="getFormControl('centerPattern').dirty&&getFormControl('centerPattern').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="tradeChan" nz-form-item-required>{{'CenterManger.payManage.payPlus.tradeChan'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.tradeChan" name="tradeChan"      formControlName="tradeChan"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="tradeChan"></nz-input>
+                    <div nz-form-explain *ngIf="getFormControl('tradeChan').dirty&&getFormControl('tradeChan').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                </div>
+            </div>
+        </div>
+
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="wxOauthAppid" >{{'CenterManger.payManage.payPlus.wxOauthAppid'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.wxOauthAppid" name="wxOauthAppid"      formControlName="wxOauthAppid"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="wxOauthAppid"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="companion" nz-form-item-required>{{'CenterManger.payManage.payPlus.companion'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.companion" name="companion"      formControlName="companion"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="companion"></nz-input>
+                    <div nz-form-explain *ngIf="getFormControl('companion').dirty&&getFormControl('companion').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="subCompanion" >{{'CenterManger.payManage.payPlus.subCompanion'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.subCompanion" name="subCompanion"      formControlName="subCompanion"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="subCompanion"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="appid" >{{'CenterManger.payManage.payPlus.appid'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.appid" name="appid"      formControlName="appid"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="appid"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="subAppid" >{{'CenterManger.payManage.payPlus.subAppid'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.subAppid" name="subAppid"      formControlName="subAppid"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="subAppid"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="signkey" nz-form-item-required>{{'CenterManger.payManage.payPlus.signkey'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input  name="signkey"
+                               formControlName="signkey"
+                               [(ngModel)]="model.signkey"
+                               nzId="signkey"
+                               [nzType]="'textarea'" [nzRows]="'3'"
+                               nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                    <div nz-form-explain *ngIf="getFormControl('signkey').dirty&&getFormControl('signkey').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="currency" >{{'CenterManger.payManage.payPlus.currency'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.currency" name="currency"      formControlName="currency"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="currency"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="refundId" >{{'CenterManger.payManage.payPlus.refundId'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.refundId" name="refundId"      formControlName="refundId"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="refundId"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="refundPwd" >{{'CenterManger.payManage.payPlus.refundPwd'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.refundPwd" name="refundPwd"    [nzType]="'password'"  formControlName="refundPwd"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="refundPwd"></nz-input>
+                    <!--<div nz-form-explain *ngIf="getFormControl('refundPwd').dirty&&getFormControl('refundPwd').hasError('minlength')">{{'CenterManger.tips.Pwdminlength'|translate}}</div>-->
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="notifyUrl" >{{'CenterManger.payManage.payPlus.notifyUrl'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.notifyUrl" name="notifyUrl"      formControlName="notifyUrl"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="notifyUrl"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col  [nzSpan]="6">
+                    <label for="callbackUrl" >{{'CenterManger.payManage.payPlus.callbackUrl'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [(ngModel)]="model.callbackUrl" name="callbackUrl"      formControlName="callbackUrl"
+                              [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="callbackUrl"></nz-input>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div nz-form-item nz-row  class="margin-top-btn">
+        <div nz-form-control nz-col class="text-center">
+            <button nz-button [nzType]="'primary'" nzSize="large" [nzLoading]="isLoadingOne" [disabled]="!modelGroup.valid">
+                <span>{{'default.btn.saveBtn' | translate}}</span>
+            </button>
+
+            <button nz-button [nzType]="'default'" nzSize="large" (click)="onGoBack()">
+                <span>{{'default.btn.cancelBtn' | translate}}</span>
+            </button>
+
+        </div>
+    </div>
+
+</form>
+   </nz-card>

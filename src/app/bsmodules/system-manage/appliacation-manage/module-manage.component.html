@@ -1,0 +1,120 @@
+<nz-card>
+    <div class="app-module-wrap">
+        <div class="app-module-heand">
+            <nz-button-group [nzSize]="'large'">
+                <!--*ngIf="helper.btnRole('APPADDPARENTNODE')"-->
+                <!--*ngIf="helper.btnRole('APPADDCHILDNODE')"-->
+                <!--*ngIf="helper.btnRole('APPEDITNODE')"-->
+                <!--*ngIf="helper.btnRole('APPDELNODE')"-->
+                <button nz-button *ngIf="helper.btnRole('APPADDPARENTNODE')" [nzType]="'primary'" [nzSize]="'large'" (click)="onAddParentNode($event)">{{'AppManage.moduleManagePage.btns.addParentNode'|translate}}</button>
+                <button nz-button *ngIf="helper.btnRole('APPADDCHILDNODE')" [nzType]="'primary'" [nzSize]="'large'" (click)="onAddChildNode()">{{'AppManage.moduleManagePage.btns.addChildNode'|translate}}</button>
+                <button nz-button *ngIf="helper.btnRole('APPEDITNODE')" [nzType]="'default'" [nzSize]="'large'" (click)="onEditNode()">{{'AppManage.moduleManagePage.btns.editNode'|translate}}</button>
+                <button nz-button *ngIf="helper.btnRole('APPDELNODE')" [nzType]="'default'" [nzSize]="'large'" (click)="onDelNode()">{{'AppManage.moduleManagePage.btns.delNode'|translate}}</button>
+            </nz-button-group>
+        </div>
+        <div class="app-module-content">
+            <div class="app-module-tree">
+                    <nz-tree #tree [nzNodes]="treeNodes"
+                             [nzShowLine]="true"
+                             [nzOptions]="options">
+                    </nz-tree>
+            </div>
+            <div class="app-module-inputs">
+                <form nz-form [formGroup]="moduleManageForm" (ngSubmit)="onSave()">
+                    <!--<nz-input [nzType]="'hidden'" formControlName="id" [nzId]="'id'" [(ngModel)]="model.id"></nz-input>-->
+                    <!--<nz-input [nzType]="'hidden'" formControlName="parent" [nzId]="'parent'" [(ngModel)]="model.parent"></nz-input>-->
+                    <input type="hidden" name="id" id="id" formControlName="id" [(ngModel)]="model.id">
+                    <input type="hidden" name="parent" id="parent" formControlName="parent" [(ngModel)]="model.parent">
+                    <!--父模块名称-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left">
+                            <label for="pTitle">{{'AppManage.moduleManagePage.modelFields.pTitle'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSm]="19">
+                            <nz-input [nzSize]="'large'" formControlName="pTitle" [nzId]="'pTitle'" [(ngModel)]="model.pTitle" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                    <!--模块名称-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left">
+                            <label for="name" nz-form-item-required>{{'AppManage.moduleManagePage.modelFields.name'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+                            <nz-input [nzSize]="'large'" formControlName="name" [nzId]="'name'" [(ngModel)]="model.name" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">
+                                {{'default.validationMessages.emptyErr'|translate}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--模块排序-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left">
+                            <label for="ordered" nz-form-item-required>{{'AppManage.moduleManagePage.modelFields.ordered'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+                            <nz-input [nzSize]="'large'" formControlName="ordered" [nzId]="'ordered'" [(ngModel)]="model.ordered" nzPlaceHolder="{{'default.hint.pleaseInputNum'|translate}}"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('ordered').dirty&&getFormControl('ordered').hasError('required')">
+                                {{'default.validationMessages.emptyErr'|translate}}
+                            </div>
+                            <div nz-form-explain *ngIf="getFormControl('ordered').dirty&&getFormControl('ordered').value&&getFormControl('ordered').hasError('numberError')">
+                                {{'default.validationMessages.numErr'|translate}}
+                            </div>
+                        </div>
+                    </div>
+                    <!--模块图标样式类-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left">
+                            <label for="iconClass">{{'AppManage.moduleManagePage.modelFields.iconClass'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSm]="19">
+                            <nz-input [nzSize]="'large'" formControlName="iconClass" [nzId]="'iconClass'" [(ngModel)]="model.iconClass" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                    <!--请求地址-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left">
+                            <label for="module">{{'AppManage.moduleManagePage.modelFields.module'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSm]="19">
+                            <nz-input [nzSize]="'large'" formControlName="module" [nzId]="'module'" [(ngModel)]="model.module" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                    <!--角色-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left">
+                            <label for="roles">{{'AppManage.moduleManagePage.modelFields.roles'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSm]="19">
+                            <nz-input [nzSize]="'roles'" formControlName="roles" [nzId]="'roles'" [(ngModel)]="model.roles" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                    <!--模块源码-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left">
+                            <label for="appCode">{{'AppManage.moduleManagePage.modelFields.appCode'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSm]="19">
+                            <nz-input [nzSize]="'large'" formControlName="appCode" [nzId]="'appCode'" [(ngModel)]="model.appCode" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                    <!--是否激活、是否为系统菜单-->
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSm]="5" class="txt-left"></div>
+                        <div nz-form-control nz-col [nzSm]="19">
+                            <label nz-checkbox formControlName="isShow" [(ngModel)]="model.isShow">
+                                <span>{{'AppManage.moduleManagePage.modelFields.isShow'|translate}}</span>
+                            </label>
+                            <label nz-checkbox formControlName="isSysMenu" [(ngModel)]="model.isSysMenu">
+                                <span>{{'AppManage.moduleManagePage.modelFields.isSysMenu'|translate}}</span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="wrap-btn">
+                        <button nz-button [nzSize]="'large'" [nzType]="'primary'" [disabled]="!moduleManageForm.valid || !isEdit" [nzLoading]="isLoading">{{'default.btn.saveBtn'|translate}}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</nz-card>
+

@@ -1,0 +1,61 @@
+<div class="logo">
+    <a [routerLink]="['/']">
+        <img class="expanded" src="./webassets/images/max_logo.png" alt="{{settings.app.name}}" style="max-height:40px;" />
+        <img class="collapsed" src="./webassets/images/min_logo.png" alt="{{settings.app.name}}" style="max-height:30px;" />
+    </a>
+</div>
+<div class="top-nav-wrap">
+    <ul class="top-nav">
+        <!-- Menu -->
+        <li>
+            <div class="item" (click)="toggleCollapsedSideabar()">
+                <i class="anticon anticon-menu-{{settings.layout.collapsed ? 'unfold' : 'fold'}}"></i>
+            </div>
+        </li>
+        <!-- Lock Page -->
+        <li class="hidden-xs">
+            <div class="item" [routerLink]="['/lock']" (click)="onLockHandler()">
+                <i class="anticon anticon-lock"></i>
+            </div>
+        </li>
+    </ul>
+    <ul class="top-nav">
+        <!--&lt;!&ndash; Notify &ndash;&gt;-->
+        <!--<li>-->
+            <!--<header-notify></header-notify>-->
+        <!--</li>-->
+        <!--&lt;!&ndash; Task &ndash;&gt;-->
+        <!--<li class="hidden-xs">-->
+            <!--<header-task></header-task>-->
+        <!--</li>-->
+        <!--&lt;!&ndash; App Icons &ndash;&gt;-->
+        <!--<li class="hidden-xs">-->
+            <!--<header-icon></header-icon>-->
+        <!--</li>-->
+        <!-- Settings -->
+        <li class="hidden-xs">
+            <nz-dropdown nzTrigger="click" nzPlacement="bottomRight">
+                <div class="item" nz-dropdown>
+                    <i class="anticon anticon-setting"></i>
+                </div>
+                <div nz-menu style="width:200px">
+                    <div nz-menu-item class="theme-switch">
+                        <header-theme></header-theme>
+                    </div>
+                    <div nz-menu-item>
+                        <header-fullscreen></header-fullscreen>
+                    </div>
+                    <!--<div nz-menu-item>-->
+                        <!--<header-storage></header-storage>-->
+                    <!--</div>-->
+                    <div nz-menu-item>
+                        <header-langs></header-langs>
+                    </div>
+                </div>
+            </nz-dropdown>
+        </li>
+        <li class="hidden-xs">
+            <header-user></header-user>
+        </li>
+    </ul>
+</div>

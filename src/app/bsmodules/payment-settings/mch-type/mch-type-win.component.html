@@ -1,0 +1,95 @@
+<form nz-form [formGroup]="mchTypeApplyForm" (ngSubmit)="_submitForm()">
+    <!--父级类型-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label>{{'mchType.listPage.search.parent'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <search-input [(ngModel)]="mchTypeModel.parent"
+                          formControlName="parent"
+                          [nzSize]="'large'"
+                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                          [tableCfg]="parentCfg"
+                          [displayField]="'name'"
+                          [(displayValue)]="mchTypeModel.parentName"
+                          [valueField]="'categoryNo'"></search-input>
+        </div>
+    </div>
+
+    <!--类型名称-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'mchType.listPage.search.typeName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="name"
+                      [(ngModel)]="mchTypeModel.name"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('maxlength')">
+                {{'mchType.win.nameLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--类型编号-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'mchType.listPage.search.typeNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="categoryNo"
+                      [(ngModel)]="mchTypeModel.categoryNo"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('categoryNo').dirty&&getFormControl('categoryNo').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('categoryNo').dirty&&getFormControl('categoryNo').hasError('maxlength')">
+                {{'mchType.win.categoryNoLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--支付宝类型编号-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label>{{'mchType.listPage.tableCols.alipayTypeno'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="alipayTypeno"
+                      [(ngModel)]="mchTypeModel.alipayTypeno"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('alipayTypeno').dirty&&getFormControl('alipayTypeno').hasError('maxlength')">
+                {{'mchType.win.alipayTypenoLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--微信类型编号-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label>{{'mchType.listPage.tableCols.wxTypeno'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="wxTypeno"
+                      [(ngModel)]="mchTypeModel.wxTypeno"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('wxTypeno').dirty&&getFormControl('wxTypeno').hasError('maxlength')">
+                {{'mchType.win.wxTypenoLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!mchTypeApplyForm.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>

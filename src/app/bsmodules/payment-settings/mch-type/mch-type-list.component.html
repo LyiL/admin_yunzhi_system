@@ -1,0 +1,87 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+            <!--父级类型-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'mchType.listPage.search.parent'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <search-input [(ngModel)]="mchTypeListForm.parent"
+                                      [name]="'parent'"
+                                      nzId="parent"
+                                      [nzSize]="'large'"
+                                      nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                      [displayField]="'name'"
+                                      [valueField]="'orgNo'"
+                                      (nzSelect)="onSelectParent($event)"
+                                      [tableCfg]="parentCfg"></search-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--类型名称-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'mchType.listPage.search.typeName'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="mchTypeListForm.name"
+                                  name="name"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="name"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--类型编号-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'mchType.listPage.search.typeNo'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="mchTypeListForm.categoryNo"
+                                  name="categoryNo"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="categoryNo"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+
+                <button nz-button (click)="onNewMchType()" [nzType]="'default'" [nzSize]="'large'" *ngIf="helper.btnRole('AMTADD')">
+                    <span>{{'default.btn.newBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="false">
+    <simple-table #mchTypeListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax">
+
+        <!--支付宝类型编号渲染-->
+        <ng-template st-row="alipayTypenoRender" let-item>
+            <ng-container>{{helper.isEmpty(item['alipayTypeno']) ? '/' : item['alipayTypeno']}}</ng-container>
+        </ng-template>
+
+        <!--微信类型编号-->
+        <ng-template st-row="wxTypenoRender" let-item>
+            <ng-container>{{helper.isEmpty(item['wxTypeno']) ? '/' : item['wxTypeno']}}</ng-container>
+        </ng-template>
+
+    </simple-table>
+</nz-card>
+

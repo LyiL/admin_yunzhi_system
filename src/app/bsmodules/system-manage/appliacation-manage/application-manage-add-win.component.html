@@ -1,0 +1,35 @@
+<form nz-form [formGroup]="appManageForm" (ngSubmit)="onSave()">
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col  [nzSm]="5">
+            <label for="appCode" nz-form-item-required>{{'AppManage.listPage.appManageWin.appCode'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzSize]="'large'" formControlName="appCode" [nzId]="'appCode'" [(ngModel)]="model.appCode" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('appCode').dirty&&getFormControl('appCode').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col  [nzSm]="5">
+            <label for="appname" nz-form-item-required>{{'AppManage.listPage.appManageWin.appname'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzSize]="'large'" formControlName="appname" [nzId]="'appname'" [(ngModel)]="model.appname" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('appname').dirty&&getFormControl('appname').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col  [nzSm]="5">
+            <label for="description">{{'AppManage.listPage.appManageWin.description'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzSize]="'large'" [nzType]="'textarea'" formControlName="description" [nzId]="'description'" [(ngModel)]="model.description" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button nz-button [nzSize]="'large'" [nzType]="'primary'" [disabled]="!(appManageForm.valid)" [nzLoading]="isLoading">{{'default.btn.saveBtn'|translate}}</button>
+    </div>
+</form>

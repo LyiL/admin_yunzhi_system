@@ -1,0 +1,63 @@
+<form nz-form [formGroup]="staffModifyPwdFormGroup" (ngSubmit)="onSubmit($event)">
+
+    <!-- 重新设置密码 -->
+    <div nz-row nz-form-item>
+        <div nz-col nz-form-label [nzSm]="6">
+            <label for="userPwd" nz-form-item-required>{{'staff.modifyPwd.resetPwd'|translate}}</label>
+        </div>
+        <div nz-col nz-form-control [nzSm]="16" nzHasFeedback>
+            <nz-input [nzType]="'password'"
+                      [(ngModel)]="model.userPwd"
+                      name="userPwd"
+                      nzId="userPwd"
+                      formControlName="userPwd"
+                      [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      (ngModelChange)="updateConfirmValidator()"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('userPwd').dirty&&getFormControl('userPwd').hasError('required')">
+                {{'default.validationMessages.emptyErr' | translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('userPwd').dirty&&getFormControl('userPwd').hasError('minlength')">
+                {{'staff.modifyPwd.minLength'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!-- 再次确认密码 -->
+    <div nz-row nz-form-item>
+        <div nz-col nz-form-label [nzSm]="6">
+            <label for="userPwdc" nz-form-item-required>{{'staff.modifyPwd.confirmPwd'|translate}}</label>
+        </div>
+        <div nz-col nz-form-control [nzSm]="16" nzHasFeedback>
+            <nz-input [nzType]="'password'"
+                      [(ngModel)]="model.userPwdc"
+                      name="userPwdc"
+                      nzId="userPwdc"
+                      formControlName="userPwdc"
+                      [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('userPwdc').dirty&&getFormControl('userPwdc').hasError('required')">
+                {{'default.validationMessages.emptyErr' | translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('userPwdc').dirty&&getFormControl('userPwdc').hasError('minlength')">
+                {{'staff.modifyPwd.minLength'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('userPwdc').dirty&&getFormControl('userPwdc').hasError('confirm')">
+                {{'staff.modifyPwd.repeatPwd'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div nz-form-control>
+            <button nz-button
+                    [nzSize]="'large'"
+                    [nzType]="'primary'"
+                    [disabled]="!staffModifyPwdFormGroup.valid"
+                    [nzLoading]="isLoad">
+                {{'default.btn.saveBtn'|translate}}
+            </button>
+        </div>
+    </div>
+
+</form>

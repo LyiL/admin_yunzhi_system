@@ -1,0 +1,31 @@
+<nz-card [nzBordered]="false" class="ng-card-m">
+    <desc-list size="large" class="mb-lg" col="2">
+        <ng-container *ngFor="let cField of wxPublicAuthDetailFields">
+            <desc-list-item term="{{cField.title}}">
+                <ng-template #isEmptyValue> / </ng-template>
+                <ng-container *ngIf="!helper.isEmpty(wxPublicAuthInfoData[cField.field]); else isEmptyValue">
+                    <ng-container [ngSwitch]="cField.type">
+                        <ng-container *ngSwitchCase="'dict'">
+                            {{wxPublicAuthInfoData[cField.field]|dictTrans:cField['transKey']}}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'datetime'">
+                            {{wxPublicAuthInfoData[cField.field]|_date:cField['format']}}
+                        </ng-container>
+                        <ng-container *ngSwitchCase="'reqXml'">
+                            <div class="break-reqXml">{{wxPublicAuthInfoData[cField.field]}}</div>
+                        </ng-container>
+                        <ng-container *ngSwitchDefault>{{wxPublicAuthInfoData[cField.field]}}</ng-container>
+                    </ng-container>
+                </ng-container>
+            </desc-list-item>
+        </ng-container>
+    </desc-list>
+    <div nz-row class="text-center">
+        <div nz-col>
+            <button nz-button [nzSize]="'large'" (click)="_onBack()">
+                {{'default.btn.backBtn'|translate}}
+            </button>
+        </div>
+    </div>
+</nz-card>
+

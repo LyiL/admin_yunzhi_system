@@ -1,0 +1,189 @@
+<nz-card [nzBordered]="false" class="ng-card-m">
+    <form nz-form [formGroup]="timeTaskFormGroup" class="padding-form" (ngSubmit)="onSubmit()">
+        <fieldset>
+
+            <div nz-row [nzGutter]="40" [nzType]="'flex'" [nzJustify]="'space-between'">
+
+                <!-- 任务编码 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="id" nz-form-item-required>{{'timeTask.editPage.id' | translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'id'"
+                                      [(ngModel)]="model.id"
+                                      formControlName="id"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                      [nzDisabled]='isDisabled'></nz-input>
+                            <div nz-form-explain
+                                *ngIf="getFormControl('id').dirty&&getFormControl('id').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 任务名称 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="taskName" nz-form-item-required>{{'timeTask.editPage.taskName' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'taskName'"
+                                      [(ngModel)]="model.taskName"
+                                      formControlName="taskName"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('taskName').dirty&&getFormControl('taskName').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 分组名 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="groupName" nz-form-item-required>{{'timeTask.editPage.groupName' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'groupName'"
+                                      [(ngModel)]="model.groupName"
+                                      formControlName="groupName"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('groupName').dirty&&getFormControl('groupName').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 执行时间 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="cronExp" nz-form-item-required>{{'timeTask.editPage.cronExp' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'cronExp'"
+                                      [(ngModel)]="model.cronExp"
+                                      formControlName="cronExp"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('cronExp').dirty&&getFormControl('cronExp').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 时间描述 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="cronDesc" nz-form-item-required>{{'timeTask.editPage.cronDesc' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'cronDesc'"
+                                      [(ngModel)]="model.cronDesc"
+                                      formControlName="cronDesc"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('cronDesc').dirty&&getFormControl('cronDesc').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 执行目标类 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="targetClass" nz-form-item-required>{{'timeTask.editPage.targetClass' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'targetClass'"
+                                      [(ngModel)]="model.targetClass"
+                                      formControlName="targetClass"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('targetClass').dirty&&getFormControl('targetClass').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 外部参数 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-row nz-form-item>
+                        <div nz-col nz-form-label [nzSm]="4">
+                            <label for="outsideParams">{{'timeTask.editPage.outsideParams'|translate}}</label>
+                        </div>
+                        <div nz-col nz-form-control [nzSm]="18">
+                            <nz-input [(ngModel)]="model.outsideParams"
+                                      name="outsideParams"
+                                      nzId="outsideParams"
+                                      formControlName="outsideParams"
+                                      [nzSize]="'large'"
+                                      [nzType]="'textarea'"
+                                      [nzRows]="4"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 任务描述 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-row nz-form-item>
+                        <div nz-col nz-form-label [nzSm]="4">
+                            <label for="descript">{{'timeTask.editPage.descript'|translate}}</label>
+                        </div>
+                        <div nz-col nz-form-control [nzSm]="18">
+                            <nz-input [(ngModel)]="model.descript"
+                                      name="descript"
+                                      nzId="descript"
+                                      formControlName="descript"
+                                      [nzSize]="'large'"
+                                      [nzType]="'textarea'"
+                                      [nzRows]="4"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+        <div nz-form-item nz-row>
+            <div nz-form-control nz-col class="text-center">
+                <button nz-button [nzType]="'primary'" nzSize="large" [nzLoading]="isLoad" [disabled]='!timeTaskFormGroup.valid'>
+                    <span>{{'default.btn.saveBtn' | translate}}</span>
+                </button>
+
+                <button nz-button [nzType]="'default'" nzSize="large" (click)="onBack()">
+                    <span>{{'default.btn.cancelBtn' | translate}}</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</nz-card>
+
+

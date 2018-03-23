@@ -1,0 +1,63 @@
+<nz-card [nzBordered]="true">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="25">
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label for="certType">{{'CenterManger.SCManage.listPage.certType'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-select nzId="certType" name="certType" [(ngModel)]="form.certType" nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                            <nz-option  nzLabel="{{'CenterManger.All'|translate}}"></nz-option>
+                            <nz-option
+                                *ngFor="let Type of certTypes"
+                                [nzLabel]="Type.name"
+                                [nzValue]="Type.id">
+                            </nz-option>
+                        </nz-select>
+                    </div>
+                </div>
+            </div>
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label for="thridMerchantNo">{{'CenterManger.SCManage.listPage.thridMerchantNo'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="form.thridMerchantNo" name="thridMerchantNo" [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="thridMerchantNo"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'CenterManger.btn.searchBtn'|translate}}</span>
+                </button>
+                <button nz-button  (click)="onAdd()" *ngIf="helper.btnRole('ASCADD')" [nzType]="'default'" [nzSize]="'large'">
+                    <span>{{'CenterManger.btn.newBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+<nz-card [nzBordered]="true">
+    <simple-table #safCertListTable [url]="tableCfg.url" [reqMehtod]="'POST'"  [extraParams]="tableCfg.params" [total]="tableCfg.total" [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName" [reqReName]="tableCfg.reqReName" [isAjax]="tableCfg.isAjax">
+        <ng-template st-row="certTypeRender" let-item>
+            {{!helper.isEmpty(item['certType'])?helper.dictTrans('GW_CERT_TYPE',item['certType']) : '/'}}
+        </ng-template>
+        <ng-template st-row="thridMerchantNoRender" let-item>
+            {{!helper.isEmpty(item['thridMerchantNo'])?item['thridMerchantNo'] : '/'}}
+        </ng-template>
+        <ng-template st-row="certNameRender" let-item>
+            {{!helper.isEmpty(item['certName'])?item['certName'] : '/'}}
+        </ng-template>
+        <ng-template st-row="certSetRender" let-item>
+            <ng-container [ngSwitch]="item['certSet']">
+                <span *ngSwitchCase="1" >
+                    {{'CenterManger.SCManage.listPage.Yes'|translate}}
+                </span>
+                <span *ngSwitchCase="0">
+                    {{'CenterManger.SCManage.listPage.No'|translate}}
+                </span>
+            </ng-container>
+        </ng-template>
+    </simple-table>
+</nz-card>

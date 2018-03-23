@@ -1,0 +1,84 @@
+<form nz-form [formGroup]="addIpWhiteListForm" (ngSubmit)="submitForm()">
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="5" >
+            <label nz-form-item-required>{{'ipWhiteList.addnew.organNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSpan]="17">
+            <search-input [(ngModel)]="this._policyNo?model.name:model.mchid"
+                          formControlName="mchid"
+                          [name]="'mchid'"
+                          [nzSize]="'large'"
+                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                          nzId="mchid"
+                          [displayField]="'name'"
+                          [valueField]="'merchantNo'"
+                         [(displayValue)]="model.name"
+                          [tableCfg]="addeleCfg" (nzSelect)="onSerarSelect($event)" [nzDisabled]="disabled"></search-input>
+
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback >
+        <div nz-form-label nz-col [nzSpan]="5"  >
+            <label nz-form-item-required >{{'ipWhiteList.addnew.apiCode'|translate}}</label>
+        </div>
+        <div  nz-form-control nz-col [nzSpan]="17" nzHasFeedback>
+            <nz-select nzId="apiCode" name="apiCode" formControlName="apiCode" [(ngModel)]="model.apiCode" formControlName="apiCode" [nzDisabled]="disabled" (nzSelectChange)="onSelet($event)"
+                       nzPlaceHolder="{{'RM.listPage.html.pleaseselect'|translate}}">
+                <nz-option
+                    *ngFor="let apiCodeDates of apiCodeDates"
+                    [nzLabel]="apiCodeDates.name"
+                    [nzValue]="apiCodeDates.id">
+                </nz-option>
+            </nz-select>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="5" >
+            <label nz-form-item-required>{{'ipWhiteList.addnew.policyNo'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="policyNo"
+                      nzId="policyNo"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.policyNo"
+                      formControlName="policyNo"
+                      [nzDisabled]="true"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('policyNo').dirty&&getFormControl('policyNo').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="5" >
+            <label nz-form-item-required>{{'ipWhiteList.addnew.policyName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="policyName"
+                      nzId="policyName"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.policyName"
+                      formControlName="policyName"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('policyName').dirty&&getFormControl('policyName').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="5" >
+            <label nz-form-item-required>{{'ipWhiteList.addnew.ips'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="ips"
+                      nzId="ips"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.ips"
+                      formControlName="ips"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('ips').dirty&&getFormControl('ips').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzLoading]="isLoading"  [nzSize]="'large'" [disabled]="!addIpWhiteListForm.valid" >{{'default.btn.saveBtn'|translate}}</button>
+    </div>
+</form>

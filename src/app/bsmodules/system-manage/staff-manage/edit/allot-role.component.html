@@ -1,0 +1,28 @@
+<nz-card [nzBordered]="false" class="ng-card-m">
+    <form nz-form [formGroup]="allotRoleFormGroup" (ngSubmit)="onSubmit()">
+        <div nz-form-item nz-row [nzGutter]="16">
+            <div nz-form-label nz-col [nzSm]="4">
+                <div nz-form-item-required>{{'staff.allotRole.selectRole' | translate}}</div>
+            </div>
+            <div nz-form-control nz-col [nzSm]="20">
+                <nz-checkbox-group [(ngModel)]="roles" formControlName="roleIds" (ngModelChange)="roleCheck(roles)">
+                </nz-checkbox-group>
+            </div>
+        </div>
+        <div nz-form-item nz-row>
+            <div nz-form-control nz-col class="text-center">
+                <nz-button-group>
+                    <button nz-button nzSize="large" [nzType]="'default'" (click)="onBack()">
+                        {{'default.btn.cancelBtn'|translate}}
+                    </button>
+
+                    <button nz-button nzSize="large" [nzType]="'primary'" [nzLoading]="isLoad" [disabled]="hasDisabled()">
+                        {{'default.btn.saveBtn'|translate}}
+                    </button>
+                </nz-button-group>
+            </div>
+        </div>
+    </form>
+</nz-card>
+
+

@@ -1,0 +1,80 @@
+<nz-card [nzBordered]="true">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="25">
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label for="name">{{'CenterManger.listPage.search.name'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="form.name" name="name" [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="name"></nz-input>
+                    </div>
+                </div>
+            </div>
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'CenterManger.btn.searchBtn'|translate}}</span>
+                </button>
+                <button nz-button  (click)="onAdd()" *ngIf="helper.btnRole('AACREATE')" [nzType]="'default'" [nzSize]="'large'">
+                    <span>{{'CenterManger.btn.addBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+<nz-card [nzBordered]="true">
+    <simple-table #AIListTable [url]="tableCfg.url" [reqMehtod]="'POST'"  [extraParams]="tableCfg.params" [total]="tableCfg.total" [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName" [reqReName]="tableCfg.reqReName" [isAjax]="tableCfg.isAjax">
+        <ng-template st-row="mermanageRender" let-item *ngIf="helper.btnRole('AAMCONFIGURE')">
+            <ng-container>
+                <a (click)="mermanageRender(item)">{{'CenterManger.btn.cfgBtn'|translate}}</a>
+            </ng-container>
+        </ng-template>
+        <ng-template st-row="accmanageRender" let-item>
+            <ng-container>
+                <a (click)="settleAcc(item)" *ngIf="helper.btnRole('AASESETUP')">{{'CenterManger.btn.settleAccBtn'|translate}}</a> <br>
+                <a (click)="serviceAcc(item)" *ngIf="helper.btnRole('AASSETUP')">{{'CenterManger.btn.serviceAccBtn'|translate}}</a>
+            </ng-container>
+        </ng-template>
+        <ng-template st-row="paymanageRender" let-item *ngIf="helper.btnRole('AAPSETUP')">
+            <ng-container>
+                <a (click)="paymanageRender(item)">{{'CenterManger.btn.setBtn'|translate}}</a>
+            </ng-container>
+        </ng-template>
+        <ng-template st-row="recmanageRender" let-item *ngIf="helper.btnRole('AARSETUP')">
+            <ng-container>
+                <a (click)="recmanageRender(item)">{{'CenterManger.btn.setBtn'|translate}}</a>
+            </ng-container>
+        </ng-template>
+        <ng-template st-row="syncfgRender" let-item  *ngIf="helper.btnRole('AASYNC')">
+            <ng-container>
+                <a (click)="syncfgRender(item)">{{'CenterManger.btn.cfgBtn'|translate}}</a>
+            </ng-container>
+        </ng-template>
+        <ng-template st-row="serviceManageRender" let-item *ngIf="helper.btnRole('SMCHMANAGE')">
+            <ng-container>
+                <a (click)="serviceManageRender(item)">{{'CenterManger.btn.buildBtn'|translate}}</a>
+            </ng-container>
+        </ng-template>
+        <ng-template st-row="resetpwdRender" let-item  *ngIf="helper.btnRole('AAEDITPWD')">
+            <ng-container>
+                <a (click)="resetpwdRender(item)">{{'CenterManger.btn.resetBtn'|translate}}</a>
+            </ng-container>
+        </ng-template>
+
+        <ng-template st-row="statusRender" let-item let-index="index">
+            <ng-container [ngSwitch]="item['status']">
+                <nz-tag *ngSwitchCase='0' [nzColor]="'orange'">{{helper.dictTrans('EXAMINE_STATUS', item['status'])}}</nz-tag>
+                <nz-tag *ngSwitchCase='1' [nzColor]="'green'">{{helper.dictTrans('EXAMINE_STATUS', item['status'])}}</nz-tag>
+                <nz-tag *ngSwitchCase='2' [nzColor]="'red'">{{helper.dictTrans('EXAMINE_STATUS', item['status'])}}</nz-tag>
+                <nz-tag *ngSwitchCase='3' [nzColor]="'gray'">{{helper.dictTrans('EXAMINE_STATUS', item['status'])}}</nz-tag>
+                <nz-tag *ngSwitchCase='4' [nzColor]="'red'">{{helper.dictTrans('EXAMINE_STATUS', item['status'])}}</nz-tag>
+            </ng-container>
+        </ng-template>
+        <ng-template st-row="settleCycleRender" let-item let-index="index">
+                 {{item['settleCycle']? helper.dictTrans('BALANCE_DATE', item['settleCycle'] ): '/'}}
+        </ng-template>
+        <ng-template st-row="orgNoRender" let-item let-index="index">
+                {{!helper.isEmpty(item['orgNo'])?item['orgNo'] : '/'}}
+        </ng-template>
+    </simple-table>
+</nz-card>

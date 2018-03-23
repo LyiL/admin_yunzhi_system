@@ -1,0 +1,36 @@
+
+<form (ngSubmit)="_submitForm()"class="margin-top-btn">
+    <div nz-row [nzGutter]="8" >
+        <div nz-col [nzSpan]="5" [nzOffset]="'1'">
+            <div>{{this.i18n.fanyi('RM.listPage.html.rolefuncp'|translate)}}
+                <span class="star">*</span>
+                <label nz-checkbox  *ngIf="funcs.length>0" [(ngModel)]="_checked" (ngModelChange)="allFunc($event)" name="all" [nzIndeterminate]="_indete"><span>{{this.i18n.fanyi('RM.listPage.html.all'|translate)}}</span>
+                </label>
+            </div>
+            <div><span>{{this.i18n.fanyi('RM.listPage.html.multiselect'|translate)}}</span></div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="19" [nzOffset]="'3'">
+            <div *ngFor="let func of funcs">
+                <div>
+                    <label nz-checkbox [(ngModel)]="func.checked" (ngModelChange)="updateAllChecked(func)" [nzIndeterminate]="func.indeterminate" name="{{func.name}}">
+                        <span>{{func.name}}</span>
+                    </label>
+                </div>
+                <div class="ml30">
+                    <nz-checkbox-group [(ngModel)]="func.children" (ngModelChange)="updateSingleChecked(funcs)" [ngModelOptions]="{standalone: true}"></nz-checkbox-group>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+    <div nz-row>
+        <div  nz-col class="text-center">
+            <nz-button-group>
+                <button nz-button (click)="back()" nzSize="large">{{this.i18n.fanyi('default.btn.backBtn'|translate)}}</button>
+                <button nz-button  nzSize="large" [nzType]="'primary'"   [nzLoading]="isLoading"  [disabled]="hasDisabled()">{{this.i18n.fanyi('RM.listPage.html.serve'|translate)}}</button>
+            </nz-button-group>
+        </div>
+    </div>
+</form>
+
+

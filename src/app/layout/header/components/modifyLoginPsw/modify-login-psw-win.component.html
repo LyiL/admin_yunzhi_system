@@ -1,0 +1,69 @@
+<form nz-form [formGroup]="modifyLoginPswForm" (ngSubmit)="_submitForm()">
+    <!--public userPwd: string; //旧密码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'ModifyLoginPswWin.userPwd'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzId]="'userPwd'"
+                      name="userPwd"
+                      formControlName="userPwd"
+                      [nzSize]="'large'"
+                      nzType="password"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="modifyLoginPswModel.userPwd"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('userPwd').dirty&&getFormControl('userPwd').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <!--public newPassword: string; // 新密码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'ModifyLoginPswWin.newPassword'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzId]="'newPassword'"
+                      name="newPassword"
+                      formControlName="newPassword"
+                      [nzSize]="'large'"
+                      nzType="password"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="modifyLoginPswModel.newPassword"
+                      (ngModelChange)="updateConfirmValidator()"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('newPassword').dirty&&getFormControl('newPassword').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('newPassword').dirty&&getFormControl('newPassword').hasError('minlength')">
+                {{'ModifyLoginPswWin.minlengthError'|translate}}
+            </div>
+        </div>
+    </div>
+    <!--public newpwd2: string; //确认新密码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'ModifyLoginPswWin.newpwd2'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzId]="'newpwd2'"
+                      name="newpwd2"
+                      formControlName="newpwd2"
+                      [nzSize]="'large'"
+                      nzType="password"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="modifyLoginPswModel.newpwd2"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('newpwd2').dirty&&getFormControl('newpwd2').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('newpwd2').dirty&&getFormControl('newpwd2').hasError('minlength')">
+                {{'ModifyLoginPswWin.minlengthError'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('newpwd2').dirty&&getFormControl('newpwd2').hasError('confirm')">
+                {{'ModifyLoginPswWin.confirmPswError'|translate}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!modifyLoginPswForm.valid" [nzLoading]="isLoading">{{'Modal.okText'|translate}}</button>
+    </div>
+</form>

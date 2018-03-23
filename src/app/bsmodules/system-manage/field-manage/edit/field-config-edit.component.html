@@ -1,0 +1,200 @@
+<nz-card [nzBordered]="false" class="ng-card-m">
+    <form nz-form [formGroup]="fieldCfgFormGroup" class="padding-form">
+        <fieldset>
+
+            <div nz-row [nzGutter]="40" [nzType]="'flex'" [nzJustify]="'space-between'">
+
+                <!-- 配置项编码 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="confCode" nz-form-item-required>{{'fieldConfig.addFieldConfig.confCode' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'confCode'"
+                                      [(ngModel)]="model.confCode"
+                                      formControlName="confCode"
+                                      [nzDisabled]="confCodeFlag"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('confCode').dirty&&getFormControl('confCode').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 显示名称 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="appName" nz-form-item-required>{{'fieldConfig.addFieldConfig.confName' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'confName'"
+                                      [(ngModel)]="model.confName"
+                                      formControlName="confName"
+                                      [nzDisabled]="isRead"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('confName').dirty&&getFormControl('confName').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 类型 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="confType" nz-form-item-required>{{'fieldConfig.addFieldConfig.confType' | translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-select nzId="confType"
+                                       name="confType"
+                                       [(ngModel)]="model.confType"
+                                       formControlName="confType"
+                                       [nzSize]="'large'"
+                                       [nzDisabled]="isRead"
+                                       nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                       (nzSelectChange)="onChangeControl('confType')">
+                                <nz-option
+                                    *ngFor="let confType of _confType | async"
+                                    [nzLabel]="confType?.name"
+                                    [nzValue]="confType?.id">
+                                </nz-option>
+                            </nz-select>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('confType').dirty&&getFormControl('confType').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                 <!--图片上传 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-col [nzSpan]="22" *ngIf="isImgUpload">
+                            <div nz-row [nzType]="'flex'" class="ctupload--mt15" [nzJustify]="'space-between'">
+
+                                <ng-file-upload
+                                                #fileUpload
+                                                id="imgUpload"
+                                                name="imgUpload"
+                                                formControlName="imgUpload"
+                                                [(ngModel)]="model.imgUpload"
+                                                [options]="defFieldUploadSetting"
+                                                (onError)="onFileUploadError($event)"
+                                                (onUpload)="onUpload($event)"></ng-file-upload>
+                            </div>
+                            <button nz-button
+                                    [ngClass]="'ml-40'"
+                                    [nzType]="'primary'"
+                                    [nzSize]="'large'"
+                                    [disabled]="isRead"
+                                    (click)="onSelectFile()"
+                                    class="ctupload--margin">
+                                <span>{{'fieldConfig.addFieldConfig.imgUpload'|translate}}</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 配置项属性 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-row nz-form-item>
+                        <div nz-col nz-form-label [nzSm]="4">
+                            <label for="confProperty">{{'fieldConfig.addFieldConfig.confProperty'|translate}}</label>
+                        </div>
+                        <div nz-col nz-form-control [nzSm]="18">
+                            <nz-input [(ngModel)]="model.confProperty"
+                                      name="confProperty"
+                                      nzId="confProperty"
+                                      formControlName="confProperty"
+                                      [nzSize]="'large'"
+                                      [nzType]="'textarea'"
+                                      [nzRows]="4"
+                                      [nzDisabled]="isRead"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 默认值 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-row nz-form-item>
+                        <div nz-col nz-form-label [nzSm]="4">
+                            <label for="confContent">{{'fieldConfig.addFieldConfig.confContent'|translate}}</label>
+                        </div>
+                        <div nz-col nz-form-control [nzSm]="18">
+                            <nz-input [(ngModel)]="model.confContent"
+                                      name="confContent"
+                                      nzId="confContent"
+                                      formControlName="confContent"
+                                      [nzSize]="'large'"
+                                      [nzType]="'textarea'"
+                                      [nzRows]="4"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 配置项说明 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-row nz-form-item>
+                        <div nz-col nz-form-label [nzSm]="4">
+                            <label for="confDescript" nz-form-item-required>{{'fieldConfig.addFieldConfig.confDescript'|translate}}</label>
+                        </div>
+                        <div nz-col nz-form-control [nzSm]="18">
+                            <nz-input [(ngModel)]="model.confDescript"
+                                      name="confDescript"
+                                      nzId="confDescript"
+                                      formControlName="confDescript"
+                                      [nzSize]="'large'"
+                                      [nzType]="'textarea'"
+                                      [nzRows]="4"
+                                      [nzDisabled]="isRead"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                                 *ngIf="getFormControl('confDescript').dirty&&getFormControl('confDescript').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+        <div nz-form-item nz-row>
+            <div nz-form-control nz-col class="text-center">
+                <button nz-button [nzType]="'primary'" nzSize="large" (click)="onSubmit()" [nzLoading]="isLoad" [disabled]='!fieldCfgFormGroup.valid'>
+                    <span>{{'default.btn.saveBtn' | translate}}</span>
+                </button>
+
+                <button nz-button [nzType]="'default'" nzSize="large" (click)="onBack()">
+                    <span>{{'default.btn.cancelBtn' | translate}}</span>
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="border-top-1 mt-lg px-lg text-grey-dark">
+        <h4 class="h3 my-md">{{'fieldConfig.addFieldConfig.hintTitle' | translate}}</h4>
+        <p>{{'fieldConfig.addFieldConfig.hintA' | translate}}</p>
+        <p>{{'fieldConfig.addFieldConfig.hintB' | translate}}</p>
+        <p>{{'fieldConfig.addFieldConfig.hintC' | translate}}</p>
+        <p>{{'fieldConfig.addFieldConfig.hintD' | translate}}</p>
+    </div>
+
+</nz-card>
+
+
+

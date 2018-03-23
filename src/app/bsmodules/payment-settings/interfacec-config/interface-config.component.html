@@ -1,0 +1,94 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+            <!--接口编号-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'interfaceConfig.listPage.search.apiCode'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="interfaceConfigForm.code"
+                                  name="code"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="code"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--接口名称-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'interfaceConfig.listPage.search.apiName'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="interfaceConfigForm.name"
+                                  name="name"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="name"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--所属机构-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'interfaceConfig.listPage.search.bankNo'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <search-input [(ngModel)]="interfaceConfigForm.agencyCode"
+                                      [name]="'bankNo'"
+                                      [nzSize]="'large'"
+                                      nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                      nzId="bankNo"
+                                      [displayField]="'name'"
+                                      [valueField]="'orgNo'"
+                                      [tableCfg]="bankNoCfg"></search-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+
+                <button nz-button (click)="onNew()" [nzType]="'default'" [nzSize]="'large'"  *ngIf="helper.btnRole('AICREATE')">
+                    <span>{{'default.btn.newBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+
+
+
+
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="false">
+    <simple-table #interfaceConfigTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax">
+        <ng-template st-row="subAllyRender" let-item>
+            {{item['subAlly']? item['subAlly'] : '/'}}
+        </ng-template>
+        <ng-template st-row="nameRender" let-item>
+            {{item['name']? item['name'] : '/'}}
+        </ng-template>
+        <ng-template st-row="allyRender" let-item>
+            {{item['ally']? item['ally'] : '/'}}
+        </ng-template>
+        <ng-template st-row="tradeChannelRender" let-item>
+            {{item['tradeChannel']? item['tradeChannel'] : '/'}}
+        </ng-template>
+    </simple-table>
+</nz-card>
+
+
+

@@ -1,0 +1,151 @@
+<!--<nz-card  [nzBordered]="false" nzTitle="{{('CenterManger.setAccount.title'|translate) }}" class="ng-card-m">-->
+    <nz-card  [nzBordered]="false"  class="ng-card-m">
+
+    <form nz-form [formGroup]="modelGroup" (ngSubmit)="_submitForm()" class="padding-form">
+
+            <div nz-row [nzGutter]="50" [nzType]="'flex'" [nzJustify]="'space-between'">
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6">
+                            <label for="name" nz-form-item-required>{{'CenterManger.setAccount.name'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [(ngModel)]="model.name" name="name"      formControlName="name"
+                                      [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="name"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12" >
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6"><label for="type" nz-form-item-required>{{'CenterManger.setAccount.type'|translate}}</label></div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-select nzId="type" name="type" [(ngModel)]="model.type" formControlName="type" [nzSize]="'large'"
+                                       nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                                <nz-option
+                                    *ngFor="let type of type"
+                                    [nzLabel]="type.name"
+                                    [nzValue]="type.id">
+                                </nz-option>
+                            </nz-select>
+                            <div nz-form-explain *ngIf="getFormControl('type').dirty&&getFormControl('type').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6"><label for="acntIdentity" >{{'CenterManger.setAccount.acntIdentity'|translate}}</label></div>
+                        <div nz-form-control nz-col [nzSpan]="18" >
+                            <nz-input [(ngModel)]="model.acntIdentity" name="acntIdentity"      formControlName="acntIdentity"
+                                      [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInputIDcard'|translate}}" nzId="acntIdentity"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('acntIdentity').dirty&&getFormControl('acntIdentity').value&&getFormControl('acntIdentity').hasError('IDcardError')">{{'default.validationMessages.idCardErr'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6">
+                            <label for="bankCode" nz-form-item-required>{{'CenterManger.setAccount.bankName'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" >
+                            <search-input [(ngModel)]="model.bankCode"
+                                          formControlName="bankCode"
+                                          (nzSelect)="onbankSelected($event)"
+                                          [name]="'bankCode'" [nzSize]="'large'"
+                                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}" nzId="bankCode"
+                                          [tableCfg]="bankTableCfg"
+                                          [displayValue]="_bankName"
+                                          [displayField]="'name'"
+                                          [valueField]="'bankDigitalCode'"
+                            ></search-input>
+                        </div>
+                    </div>
+
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6">
+                            <label for="bankCardno" nz-form-item-required>{{'CenterManger.setAccount.bankCardno'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [(ngModel)]="model.bankCardno" name="bankCardno"      formControlName="bankCardno"
+                                      [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="bankCardno"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('bankCardno').dirty&&getFormControl('bankCardno').value&&getFormControl('bankCardno').hasError('numberError')">
+                                {{'default.validationMessages.numberErr'|translate}}
+                            </div>
+                            <div nz-form-explain *ngIf="getFormControl('bankCardno').dirty&&getFormControl('bankCardno').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6">
+                            <label for="subbranchName" nz-form-item-required>{{'CenterManger.setAccount.subbranchName'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <search-input [(ngModel)]="model.subbranchName"
+                                          formControlName="subbranchName"
+                                          [name]="'subbranchName'" [nzSize]="'large'"
+                                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}" nzId="subbranchName"
+                                          [tableCfg]="subBankCfg"
+                                          (nzSelect)="onSelect($event)"
+                                          [displayField]="'subBankName'"
+                                          [valueField]="'subBankName'"
+                            ></search-input>
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6">
+                            <label for="subbanrchCode"  nz-form-item-required>{{'CenterManger.setAccount.subbanrchCode'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [(ngModel)]="model.subbanrchCode" name="subbanrchCode"      formControlName="subbanrchCode"
+                                      [nzSize]="'large'" nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}" nzId="subbanrchCode"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('subbanrchCode').dirty&&getFormControl('subbanrchCode').value&&getFormControl('subbanrchCode').hasError('numberError')">
+                                {{'default.validationMessages.numberErr'|translate}}
+                            </div>
+                            <div nz-form-explain *ngIf="getFormControl('subbanrchCode').dirty&&getFormControl('subbanrchCode').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+
+                        </div>
+                    </div>
+                </div>
+                <div nz-col [nzSpan]="12" >
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="6"><label for="cardType" nz-form-item-required>{{'CenterManger.setAccount.cardType'|translate}}</label></div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-select nzId="cardType" name="cardType" [(ngModel)]="model.cardType"
+                                       formControlName="cardType"  [nzSize]="'large'"
+                                       nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                                <nz-option
+                                    *ngFor="let Type of cardType"
+                                    [nzLabel]="Type.name"
+                                    [nzValue]="Type.id">
+                                </nz-option>
+                            </nz-select>
+                            <div nz-form-explain *ngIf="getFormControl('cardType').dirty&&getFormControl('cardType').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        <div nz-form-item nz-row  class="margin-top-btn">
+            <div nz-form-control nz-col class="text-center">
+                <button nz-button [nzType]="'primary'" nzSize="large" [nzLoading]="isLoadingOne" [disabled]="!modelGroup.valid">
+                    <span>{{'default.btn.saveBtn' | translate}}</span>
+                </button>
+
+                <button nz-button [nzType]="'default'" nzSize="large" (click)="onGoBack()">
+                    <span>{{'default.btn.cancelBtn' | translate}}</span>
+                </button>
+
+            </div>
+        </div>
+
+    </form>
+
+</nz-card>

@@ -1,0 +1,29 @@
+<div class="wrapper">
+    <div class="abs-center width-lg">
+        <div class="py-lg text-center">
+            <nz-avatar [nzIcon]="'user'" [nzSize]="'large'"></nz-avatar>
+        </div>
+        <nz-card [nzBordered]="false">
+            <p class="mb-sm">{{'lockScreen.inputPassHint'|translate}}</p>
+            <form nz-form [formGroup]="lockScreenForm" (ngSubmit)="submit()" role="form">
+                <div nz-form-item>
+                    <div nz-form-control [nzValidateStatus]="lockScreenForm.controls.password">
+                        <nz-input formControlName="password" [(ngModel)]="pass" [nzPlaceHolder]="'password'" [nzType]="'password'" [nzSize]="'large'">
+                            <ng-template #suffix>
+                                <i class="anticon anticon-lock"></i>
+                            </ng-template>
+                        </nz-input>
+                        <div nz-form-explain *ngIf="lockScreenForm.controls.password.dirty&&lockScreenForm.controls.password.hasError('required')">{{'default.validationMessages.emptyErr'}}</div>
+                    </div>
+                </div>
+                <div nz-row nzType="flex" nzAlign="middle">
+                    <div nz-col [nzSpan]="12" style="text-align:right;">
+                        <button nz-button [disabled]="!lockScreenForm.valid" [nzType]="'primary'" [nzSize]="'large'">
+                            <span>{{'lockScreen.deblockingBtn'|translate}}</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </nz-card>
+    </div>
+</div>

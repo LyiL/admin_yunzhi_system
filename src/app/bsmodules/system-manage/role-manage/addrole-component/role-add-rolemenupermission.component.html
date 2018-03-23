@@ -1,0 +1,24 @@
+
+<form class="margin-top-btn">
+    <div nz-row [nzGutter]="8" >
+        <div nz-col [nzSpan]="6" [nzOffset]="'8'">
+            <div>{{this.i18n.fanyi('RM.listPage.html.pleaserole'|translate)}}<span class="star">*</span></div>
+            <div><span>{{this.i18n.fanyi('RM.listPage.html.multiselect'|translate)}}</span></div>
+        </div>
+        <div nz-col class="gutter-row" [nzSpan]="18" [nzOffset]="'11'">
+            <nz-tree [nzNodes]="funcs"
+                     [nzCheckable]="true"
+                     (nzEvent)="onEvent(funcs)" ></nz-tree>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div  nz-col class="text-center">
+            <nz-button-group>
+                <button nz-button (click)="back()" nzSize="large">{{this.i18n.fanyi('default.btn.backBtn'|translate)}}</button>
+                <button nz-button [nzType]="'primary'" nzSize="large" (click)="onNextSetp()"   [nzLoading]="isLoading"  [disabled]="hasDisabled()" >{{this.i18n.fanyi('RM.nzTitle.step3Title')}}</button>
+                <button nz-button nzSize="large" [nzType]="'defult'"(click)="_submitForm()" [nzLoading]="_isLoading"  [disabled]="hasDisabled()"  >{{this.i18n.fanyi('RM.listPage.html.serve'|translate)}}</button>
+            </nz-button-group>
+
+        </div>
+    </div>
+</form>

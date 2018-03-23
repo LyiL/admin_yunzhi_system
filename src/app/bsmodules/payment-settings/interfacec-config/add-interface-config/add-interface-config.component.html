@@ -1,0 +1,169 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [formGroup]="addInterfacConfigForm" (ngSubmit)="submitForm()">
+    <div nz-row [nzType]="'flex'" [nzJustify]="'space-between'">
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row nzHasFeedback>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label nz-form-item-required>{{'interfaceConfig.listPage.tableCols.html.code'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="code"
+                              nzId="code"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.code"
+                              formControlName="code" [nzDisabled]="isdisabled"></nz-input>
+                    <div nz-form-explain *ngIf="getFormControl('code').dirty&&getFormControl('code').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row nzHasFeedback>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label nz-form-item-required>{{'interfaceConfig.listPage.tableCols.html.agency'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <search-input [(ngModel)]="model.agencyCode"
+                                  formControlName="agencyCode"
+                                  [name]="'bankNo'"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                  nzId="bankNo"
+                                  [displayField]="'name'"
+                                  [valueField]="'orgNo'"
+                                  [(displayValue)]="model.organName"
+                                  [tableCfg]="bankNoCfg"></search-input>
+                    <div nz-form-explain *ngIf="getFormControl('agencyCode').dirty&&getFormControl('agencyCode').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label>{{'interfaceConfig.listPage.tableCols.html.name'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="name"
+                              nzId="name"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.name"
+                              formControlName="name"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label >{{'interfaceConfig.listPage.tableCols.html.appid'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="appid"
+                              nzId="appid"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.appid"
+                              formControlName="appid"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label>{{'interfaceConfig.listPage.tableCols.html.ally'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="ally"
+                              nzId="ally"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.ally"
+                              formControlName="ally"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label>{{'interfaceConfig.listPage.tableCols.html.subAppid'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="subAppid"
+                              nzId="subAppid"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.subAppid"
+                              formControlName="subAppid"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label>{{'interfaceConfig.listPage.tableCols.html.subAlly'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="subAlly"
+                              nzId="subAlly"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.subAlly"
+                              formControlName="subAlly"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row >
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label>{{'interfaceConfig.listPage.tableCols.html.partkey'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="partkey"
+                              nzId="partkey"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.partkey"
+                              formControlName="partkey"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+            <div nz-form-item nz-row>
+                <div nz-form-label nz-col [nzSpan]="6">
+                    <label>{{'interfaceConfig.listPage.tableCols.html.tradeChannel'|translate}}</label>
+                </div>
+                <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                    <nz-input [nzSize]="'large'"
+                              name="tradeChannel"
+                              nzId="tradeChannel"
+                              nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                              [(ngModel)]="model.tradeChannel"
+                              formControlName="tradeChannel"></nz-input>
+                </div>
+            </div>
+        </div>
+        <div nz-col [nzSpan]="12">
+        <div nz-form-item nz-row nzHasFeedback>
+            <div nz-form-label nz-col [nzSpan]="6">
+                <label>{{'interfaceConfig.listPage.tableCols.html.appKey'|translate}}</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                <nz-input [nzSize]="'large'"
+                          name="appKey"
+                          nzId="appKey"
+                          nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                          [(ngModel)]="model.appKey"
+                          formControlName="appKey"></nz-input>
+            </div>
+        </div>
+    </div>
+    </div>
+    <div nz-row class="wrap-btn">
+        <button nz-button [nzType]="'primary'" [nzLoading]="isLoading"  [nzSize]="'large'" [disabled]="!addInterfacConfigForm.valid" >{{'default.btn.saveBtn'|translate}}</button>
+            <button nz-button [nzType]="'default'" nzSize="large" (click)="onBack()">
+                <span>{{'default.btn.cancelBtn'|translate}}</span>
+            </button>
+        </div>
+</form>
+</nz-card>
+

@@ -1,0 +1,78 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+            <!--关联商户类型编号-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'QQMchType.listPage.search.categoryNo'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="qqMchTypeListForm.categoryNo"
+                                  name="categoryNo"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="categoryNo"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--类型编号-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'QQMchType.listPage.search.typeNo'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="qqMchTypeListForm.typeNo"
+                                  name="typeNo"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="typeNo"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!--类型名称-->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label><label>{{'QQMchType.listPage.search.typeName'|translate}}</label></div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="qqMchTypeListForm.typeName"
+                                  name="typeName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                                  nzId="typeName"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+
+                <button nz-button (click)="onNewQQMchType()" [nzType]="'default'" [nzSize]="'large'" *ngIf="helper.btnRole('AQQMCHADD')">
+                    <span>{{'default.btn.newBtn'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="false">
+    <simple-table #qqMchTypeListTable
+                  [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax">
+
+        <!--关联商户类型编号渲染-->
+        <ng-template st-row="categoryNoRender" let-item>
+            <ng-container>{{helper.isEmpty(item['categoryNo']) ? '/' : item['categoryNo']}}</ng-container>
+        </ng-template>
+
+    </simple-table>
+</nz-card>
+

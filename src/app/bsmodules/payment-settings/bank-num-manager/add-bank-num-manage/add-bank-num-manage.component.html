@@ -1,0 +1,95 @@
+<form nz-form [formGroup]="addBankNumManage" (ngSubmit)="submitForm()">
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="7" >
+            <label nz-form-item-required>{{'bankNumManage.addNew.cardBin'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="cardBin"
+                      nzId="cardBin"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.cardBin"
+                      formControlName="cardBin"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('cardBin').dirty&&getFormControl('cardBin').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="7" >
+            <label nz-form-item-required>{{'bankNumManage.addNew.cardLeg'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="cardLeg"
+                      nzId="cardLeg"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.cardLeg"
+                      formControlName="cardLeg"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('cardLeg').dirty&&getFormControl('cardLeg').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="7" >
+            <label nz-form-item-required>{{'bankNumManage.addNew.orgBankno'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="orgBankno"
+                      nzId="orgBankno"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.orgBankno"
+                      formControlName="orgBankno"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('orgBankno').dirty&&getFormControl('orgBankno').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="7" >
+            <label nz-form-item-required>{{'bankNumManage.addNew.smallName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="smallName"
+                      nzId="smallName"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.smallName"
+                      formControlName="smallName"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('smallName').dirty&&getFormControl('smallName').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="7" >
+            <label nz-form-item-required>{{'bankNumManage.addNew.fullName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="fullName"
+                      nzId="fullName"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.fullName"
+                      formControlName="fullName"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('fullName').dirty&&getFormControl('fullName').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div nz-form-item nz-row nzHasFeedback>
+        <div nz-form-label nz-col [nzSm]="7" >
+            <label nz-form-item-required>{{'bankNumManage.addNew.bankLinkno'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="17" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      name="bankLinkno"
+                      nzId="bankLinkno"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.bankLinkno"
+                      formControlName="bankLinkno"
+            ></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('bankLinkno').dirty&&getFormControl('bankLinkno').hasError('required')">{{'default.validationMessages.emptyErr'|translate}}</div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzLoading]="isLoading"  [nzSize]="'large'" [disabled]="!addBankNumManage.valid" >{{'default.btn.saveBtn'|translate}}</button>
+    </div>
+</form>

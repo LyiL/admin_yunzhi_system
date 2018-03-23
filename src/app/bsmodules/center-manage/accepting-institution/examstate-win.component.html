@@ -1,0 +1,17 @@
+<form nz-form [formGroup]="StatusForm" (ngSubmit)="_submitForm()">
+    <div nz-form-item nz-row [nzGutter]="16">
+        <div nz-form-label nz-col [nzSm]="4">
+            <label nz-form-item-required>{{'CenterManger.listPage.win.status'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="20">
+            <nz-radio-group [(ngModel)]="model.status" formControlName="status">
+                <label nz-radio *ngFor="let Status of examStates" [nzValue]="Status.id " [nzChecked]="Status.id== model.status">
+                    <span>{{Status.name}}</span>
+                </label>
+            </nz-radio-group>
+        </div>
+    </div>
+        <div  class="modal-footer">
+            <button nz-button [nzType]="'primary'" [nzLoading]="isLoadingOne" [disabled]="!StatusForm.valid">{{'default.btn.saveBtn'|translate}}</button>
+        </div>
+</form>

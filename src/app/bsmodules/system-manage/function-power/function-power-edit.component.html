@@ -1,0 +1,173 @@
+<nz-card [nzBordered]="false" class="ng-card-m">
+    <form nz-form [formGroup]="FunctionPowerFormGroup" class="padding-form" (ngSubmit)="onSubmit()">
+        <fieldset>
+
+            <div nz-row [nzGutter]="40" [nzType]="'flex'" [nzJustify]="'space-between'">
+
+                <!-- APPID -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="appId" nz-form-item-required>{{'funcPower.addFuncPower.appId' | translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'appId'"
+                                      [(ngModel)]="model.appId"
+                                      (ngModelChange)="modelChange($event)"
+                                      formControlName="appId"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('appId').dirty&&getFormControl('appId').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 功能组 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col  [nzSpan]="4">
+                            <label for="authgroup" nz-form-item-required>{{'funcPower.addFuncPower.authgroup'|translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18">
+                            <search-input [(ngModel)]="model.authgroup"
+                                          [name]="'authgroup'"
+                                          [nzSize]="'large'"
+                                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                          formControlName="authgroup"
+                                          nzId="authgroup"
+                                          [tableCfg]="authgroupTableCfg"
+                                          [displayField]="'name'"
+                                          [valueField]="'orgNo'"
+                                          (nzSelect)="onSelectFunction($event)"
+                                          [searchBefore]="onAuthgroupBefore.bind(this)"></search-input>
+                            <div nz-form-explain *ngIf="getFormControl('authgroup').dirty&&getFormControl('authgroup').hasError('required')">
+                                {{'default.validationMessages.emptyErr'|translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 功能编码 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="authcode" nz-form-item-required>{{'funcPower.addFuncPower.authcode' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'authcode'"
+                                      [(ngModel)]="model.authcode"
+                                      formControlName="authcode"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('authcode').dirty&&getFormControl('authcode').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 功能名称 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="actionName" nz-form-item-required>{{'funcPower.addFuncPower.actionName' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'actionName'"
+                                      [(ngModel)]="model.actionName"
+                                      formControlName="actionName"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain
+                            *ngIf="getFormControl('actionName').dirty&&getFormControl('actionName').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 功能路径 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="actionPath" nz-form-item-required>{{'funcPower.addFuncPower.actionPath' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'actionPath'"
+                                      [(ngModel)]="model.actionPath"
+                                      formControlName="actionPath"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('actionPath').dirty&&getFormControl('actionPath').hasError('required')">
+                                {{'default.validationMessages.emptyErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 排序 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-form-item nz-row>
+                        <div nz-form-label nz-col [nzSpan]="4">
+                            <label for="orderBy">{{'funcPower.addFuncPower.orderBy' |
+                                translate}}</label>
+                        </div>
+                        <div nz-form-control nz-col [nzSpan]="18">
+                            <nz-input [nzSize]="'large'"
+                                      [nzId]="'orderBy'"
+                                      [(ngModel)]="model.orderBy"
+                                      formControlName="orderBy"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                            <div nz-form-explain *ngIf="getFormControl('orderBy').dirty&&getFormControl('orderBy').hasError('minlength')">
+                                {{'funcPower.addFuncPower.orderByLength' | translate}}
+                            </div>
+                            <div nz-form-explain *ngIf="getFormControl('orderBy').dirty&&getFormControl('orderBy').hasError('numberError')">
+                                {{'default.validationMessages.numberErr' | translate}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 请求包含的参数 -->
+                <div nz-col [nzSpan]="12">
+                    <div nz-row nz-form-item>
+                        <div nz-col nz-form-label [nzSm]="4">
+                            <label for="actionParm">{{'funcPower.addFuncPower.actionParm'|translate}}</label>
+                        </div>
+                        <div nz-col nz-form-control [nzSm]="18">
+                            <nz-input [(ngModel)]="model.actionParm"
+                                      name="actionParm"
+                                      nzId="actionParm"
+                                      formControlName="actionParm"
+                                      [nzSize]="'large'"
+                                      [nzType]="'textarea'"
+                                      [nzRows]="4"
+                                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </fieldset>
+
+        <div nz-form-item nz-row>
+            <div nz-form-control nz-col class="text-center">
+                <button nz-button [nzType]="'primary'" nzSize="large" [nzLoading]="isLoad" [disabled]="!FunctionPowerFormGroup.valid">
+                    <span>{{'default.btn.saveBtn' | translate}}</span>
+                </button>
+
+                <button nz-button [nzType]="'default'" nzSize="large" (click)="onBack()">
+                    <span>{{'default.btn.cancelBtn' | translate}}</span>
+                </button>
+            </div>
+        </div>
+    </form>
+</nz-card>
+
+

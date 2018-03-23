@@ -1,0 +1,78 @@
+<form nz-form [formGroup]="bankConfigApplyForm" (ngSubmit)="_submitForm()">
+    <!--银行名称-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'BankConfig.listPage.search.name'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="name"
+                      [(ngModel)]="model.name"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('maxlength')">
+                {{'BankConfig.win.nameLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--服务电话-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'BankConfig.listPage.tableCols.bankDigitalCode'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="bankDigitalCode"
+                      [(ngModel)]="model.bankDigitalCode"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('bankDigitalCode').dirty&&getFormControl('bankDigitalCode').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('bankDigitalCode').dirty&&getFormControl('bankDigitalCode').hasError('maxlength')">
+                {{'BankConfig.win.bankDigitalCodeLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--银行编码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label nz-form-item-required>{{'BankConfig.listPage.search.bankEnCode'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="bankEnCode"
+                      [(ngModel)]="model.bankEnCode"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('bankEnCode').dirty&&getFormControl('bankEnCode').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('bankEnCode').dirty&&getFormControl('bankEnCode').hasError('maxlength')">
+                {{'BankConfig.win.bankEnCodeLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--备注-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="6">
+            <label>{{'BankConfig.listPage.tableCols.descript'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="descript"
+                      [(ngModel)]="model.descript"></nz-input>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!bankConfigApplyForm.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>

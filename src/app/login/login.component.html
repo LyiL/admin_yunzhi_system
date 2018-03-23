@@ -1,0 +1,52 @@
+<div class="login-wrap">
+  <div class="login-box">
+    <div class="login-body">
+        <nz-spin [class.login_spin]="true" [nzSpinning]="isLoading">
+          <div class="login-logo">
+            <img src="/webassets/images/logo.png"/>
+          </div>
+          <div class="login-title">{{title}}</div>
+          <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="onLoginHeadler()">
+            <div nz-form-item>
+              <div nz-form-control>
+                <nz-input formControlName="userName" nzPlaceHolder="{{'Login.loginUser'|translate}}" [nzId]="'userName'" [(ngModel)]="form.userName" [nzSize]="'large'">
+                  <ng-template #prefix>
+                    <i class="anticon anticon-user"></i>
+                  </ng-template>
+                </nz-input>
+                <div nz-form-explain *ngIf="validateForm.controls.userName.dirty&&validateForm.controls.userName.hasError('required')">{{'Login.userError'|translate}}</div>
+              </div>
+            </div>
+            <div nz-form-item>
+              <div nz-form-control>
+                <nz-input formControlName="userPwd" [nzType]="'password'" [nzId]="'userPwd'" nzPlaceHolder="{{'Login.loginPass'|translate}}" [(ngModel)]="form.userPwd" [nzSize]="'large'">
+                  <ng-template #prefix>
+                    <i class="anticon anticon-lock"></i>
+                  </ng-template>
+                </nz-input>
+                <div nz-form-explain *ngIf="validateForm.controls.userPwd.dirty&&validateForm.controls.userPwd.hasError('required')">{{'Login.passError'|translate}}</div>
+              </div>
+            </div>
+            <div nz-form-item>
+              <div nz-form-control>
+                <nz-input [class.captchaIpt]="true" [nzSize]="'large'" formControlName="captcha" [nzId]="'captcha'" nzPlaceHolder="{{'Login.captcha'|translate}}" [(ngModel)]="form.captcha" [nzSize]="'large'">
+                  <ng-template #prefix>
+                    <i class="anticon anticon-picture"></i>
+                  </ng-template>
+                </nz-input>
+                <div class="captchaImgWrap" #yzm></div>
+              </div>
+            </div>
+            <div nz-form-item>
+              <div nz-form-control>
+                <label nz-checkbox formControlName="remember" [(ngModel)]="form.remember">
+                  <span>{{'Login.rememberLable'|translate}}</span>
+                </label>
+                <button nz-button class="login-form-button" [disabled]="!validateForm.valid" [nzType]="'primary'" [nzSize]="'large'">{{'Login.loginBtn'|translate}}</button>
+              </div>
+            </div>
+          </form>
+        </nz-spin>
+    </div>
+  </div>
+</div>

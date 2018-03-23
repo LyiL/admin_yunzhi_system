@@ -1,0 +1,87 @@
+<form nz-form [formGroup]="appAdminForm" (ngSubmit)="onSave()">
+    <!--public realName: string; // 真实姓名-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'AppManage.listPage.appAdminWin.realName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzId]="'realName'"
+                      name="realName"
+                      formControlName="realName"
+                      [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.realName"
+                      [nzDisabled]="isDisabled"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('realName').dirty&&getFormControl('realName').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <!--public userName: string; // 用户名-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'AppManage.listPage.appAdminWin.userName'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzId]="'userName'"
+                      name="userName"
+                      formControlName="userName"
+                      [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.userName"
+                      [nzDisabled]="isDisabled"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('userName').dirty&&getFormControl('userName').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+        </div>
+    </div>
+    <!--public userPwd: string; // 用户密码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'AppManage.listPage.appAdminWin.userPwd'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzId]="'userPwd'"
+                      name="userPwd"
+                      formControlName="userPwd"
+                      [nzSize]="'large'"
+                      nzType="password"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.userPwd"
+                      (ngModelChange)="updateConfirmValidator()"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('userPwd').dirty&&getFormControl('userPwd').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('userPwd').dirty&&getFormControl('userPwd').hasError('minlength')">
+                {{'AppManage.listPage.appAdminWin.minlengthError'|translate}}
+            </div>
+        </div>
+    </div>
+    <!--public confirmPass: string; //确认密码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'AppManage.listPage.appAdminWin.confirmPass'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="19" nzHasFeedback>
+            <nz-input [nzId]="'confirmPass'"
+                      name="confirmPass"
+                      formControlName="confirmPass"
+                      [nzSize]="'large'"
+                      nzType="password"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      [(ngModel)]="model.confirmPass"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('confirmPass').dirty&&getFormControl('confirmPass').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('confirmPass').dirty&&getFormControl('confirmPass').hasError('minlength')">
+                {{'AppManage.listPage.appAdminWin.minlengthError'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('confirmPass').dirty&&getFormControl('confirmPass').hasError('confirm')">
+                {{'AppManage.listPage.appAdminWin.confirmPswError'|translate}}
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!appAdminForm.valid" [nzLoading]="isLoading">{{'default.btn.saveBtn'|translate}}</button>
+    </div>
+</form>

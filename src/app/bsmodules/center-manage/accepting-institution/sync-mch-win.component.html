@@ -1,0 +1,68 @@
+<form nz-form [formGroup]="modelGroup" (ngSubmit)="_submitForm()">
+
+    <div nz-form-item nz-row>
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col  [nzSpan]="6">
+                <label for="ali">{{'CenterManger.syncMch.ali'|translate}}</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18" >
+                <search-input [(ngModel)]="model.alipayMchSync"
+                              formControlName="alipayMchSync"
+                              (nzSelect)="onAliSelected($event)"
+                              [name]="'alipayMchSync'" [nzSize]="'large'"
+                              nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}" nzId="alipayMchSync"
+                              [tableCfg]="aliCenterIdTableCfg"
+                              [displayValue]="aliPayName"
+                              [displayField]="'name'"
+                              [valueField]="'name'"
+                ></search-input>
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col  [nzSpan]="6">
+                <label for="qq" >{{'CenterManger.syncMch.qq'|translate}}</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18" >
+                <search-input [(ngModel)]="model.qqMchSync"
+                              formControlName="qqMchSync"
+                              (nzSelect)="onQQSelected($event)"
+                              [name]="'qqMchSync'" [nzSize]="'large'"
+                              nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}" nzId="qqMchSync"
+                              [tableCfg]="qqCenterIdTableCfg"
+                              [displayValue]="qqPayName"
+                              [displayField]="'name'"
+                              [valueField]="'name'"
+                ></search-input>
+            </div>
+        </div>
+    </div>
+    <div nz-form-item nz-row>
+        <div nz-form-item nz-row>
+            <div nz-form-label nz-col  [nzSpan]="6">
+                <label for="wx" >{{'CenterManger.syncMch.wx'|translate}}</label>
+            </div>
+            <div nz-form-control nz-col [nzSpan]="18" >
+                <search-input [(ngModel)]="model.wechatMchSync"
+                              formControlName="wechatMchSync"
+                              (nzSelect)="onWxSelected($event)"
+                              [name]="'wechatMchSync'" [nzSize]="'large'"
+                              nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}" nzId="wechatMchSync"
+                              [tableCfg]="wxCenterIdTableCfg"
+                              [displayValue]="wxPayName"
+                              [displayField]="'name'"
+                              [valueField]="'name'"
+                ></search-input>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!modelGroup.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>
+

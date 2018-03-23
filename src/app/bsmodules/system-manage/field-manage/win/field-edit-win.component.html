@@ -1,0 +1,97 @@
+<form nz-form [formGroup]="fieldFormGroup" (ngSubmit)="onSubmit($event)">
+
+    <!-- 领域名称 -->
+    <div nz-row nz-form-item>
+        <div nz-col nz-form-label [nzSm]="6">
+            <label for="name" nz-form-item-required>{{'fieldManage.listPage.editFieldWin.name'|translate}}</label>
+        </div>
+        <div nz-col nz-form-control [nzSm]="16" nzHasFeedback>
+            <nz-input [(ngModel)]="model.name"
+                      name="name"
+                      nzId="name"
+                      formControlName="name"
+                      [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+        </div>
+    </div>
+
+    <!-- 主域名 -->
+    <div nz-row nz-form-item>
+        <div nz-col nz-form-label [nzSm]="6">
+            <label for="hosts" nz-form-item-required>{{'fieldManage.listPage.editFieldWin.hosts'|translate}}</label>
+        </div>
+        <div nz-col nz-form-control [nzSm]="16" nzHasFeedback>
+            <nz-input [(ngModel)]="model.hosts"
+                      name="hosts"
+                      nzId="hosts"
+                      formControlName="hosts"
+                      [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+        </div>
+    </div>
+
+    <!-- 领域描述 -->
+    <div nz-row nz-form-item>
+        <div nz-col nz-form-label [nzSm]="6">
+            <label for="descript" nz-form-item-required>{{'fieldManage.listPage.editFieldWin.descript'|translate}}</label>
+        </div>
+        <div nz-col nz-form-control [nzSm]="16" nzHasFeedback>
+            <nz-input [(ngModel)]="model.descript"
+                      name="descript"
+                      nzId="descript"
+                      formControlName="descript"
+                      [nzSize]="'large'"
+                      [nzType]="'textarea'"
+                      [nzRows]="4"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+        </div>
+    </div>
+
+    <!-- 受理机构 -->
+    <div nz-row nz-form-item>
+        <div nz-col nz-form-label [nzSm]="6">
+            <label nz-form-item-required>{{'fieldManage.listPage.editFieldWin.bankNo' | translate}}</label>
+        </div>
+        <div nz-col nz-form-control [nzSm]="16">
+            <search-input nzAllowClear
+                          [(ngModel)]="model.bankName"
+                          [name]="'bankNo'"
+                          nzId="bankNo"
+                          [nzSize]="'large'"
+                          formControlName="bankNo"
+                          nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                          [displayField]="'name'"
+                          [valueField]="'orgNo'"
+                          (nzSelect)="bankSelect($event)"
+                          [tableCfg]="bankCfg"></search-input>
+        </div>
+    </div>
+
+    <!-- 应用ID -->
+    <div nz-row nz-form-item>
+        <div nz-col nz-form-label [nzSm]="6">
+            <label for="appId" nz-form-item-required>{{'fieldManage.listPage.editFieldWin.appId'|translate}}</label>
+        </div>
+        <div nz-col nz-form-control [nzSm]="16" nzHasFeedback>
+            <nz-input [(ngModel)]="model.appId"
+                      name="appId"
+                      nzId="appId"
+                      formControlName="appId"
+                      [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <div nz-form-control>
+            <button nz-button
+                    [nzSize]="'large'"
+                    [nzType]="'primary'"
+                    [disabled]="!fieldFormGroup.valid"
+                    [nzLoading]="isLoad">
+                {{'default.btn.saveBtn'|translate}}
+            </button>
+        </div>
+    </div>
+
+</form>

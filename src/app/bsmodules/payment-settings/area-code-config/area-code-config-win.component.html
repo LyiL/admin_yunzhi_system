@@ -1,0 +1,66 @@
+<form nz-form [formGroup]="areaCodeConfigApplyForm" (ngSubmit)="_submitForm()">
+    <!--地区码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'AreaCodeConfig.listPage.search.areaCode'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="areaCode"
+                      [(ngModel)]="model.areaCode"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('areaCode').dirty&&getFormControl('areaCode').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('areaCode').dirty&&getFormControl('areaCode').hasError('maxlength')">
+                {{'AreaCodeConfig.win.areaCodeLenErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('areaCode').dirty&&getFormControl('areaCode').hasError('numberError')">
+                {{'AreaCodeConfig.win.numberErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--地区名称-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label nz-form-item-required>{{'AreaCodeConfig.listPage.search.name'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="name"
+                      [(ngModel)]="model.name"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('required')">
+                {{'default.validationMessages.emptyErr'|translate}}
+            </div>
+            <div nz-form-explain *ngIf="getFormControl('name').dirty&&getFormControl('name').hasError('maxlength')">
+                {{'AreaCodeConfig.win.nameLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <!--国际编码-->
+    <div nz-form-item nz-row>
+        <div nz-form-label nz-col [nzSm]="5">
+            <label>{{'AreaCodeConfig.listPage.search.adCode'|translate}}</label>
+        </div>
+        <div nz-form-control nz-col [nzSm]="18">
+            <nz-input [nzSize]="'large'"
+                      nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"
+                      formControlName="adCode"
+                      [(ngModel)]="model.adCode"></nz-input>
+            <div nz-form-explain *ngIf="getFormControl('adCode').dirty&&getFormControl('adCode').hasError('maxlength')">
+                {{'AreaCodeConfig.win.adCodeLenErr'|translate}}
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-footer">
+        <button nz-button [nzType]="'primary'" [nzSize]="'large'" [disabled]="!areaCodeConfigApplyForm.valid" [nzLoading]="isLoadingOne">
+            <span>{{'default.btn.saveBtn'|translate}}</span>
+        </button>
+    </div>
+
+</form>
+

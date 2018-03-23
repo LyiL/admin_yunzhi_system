@@ -1,0 +1,107 @@
+<nz-card [nzBordered]="true">
+    <form nz-form [nzLayout]="'inline'">
+        <div nz-row [nzGutter]="24">
+
+            <!-- 任务名称 -->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label for="taskName">{{'timeTask.listPage.search.taskName'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="timeTaskForm.taskName"
+                                  name="taskName"
+                                  nzId="taskName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 任务所属分组 -->
+            <div nz-col [nzSpan]="6" class="mb-md">
+                <div nz-form-item class="d-flex">
+                    <div nz-form-label>
+                        <label for="groupName">{{'timeTask.listPage.search.groupName'|translate}}</label>
+                    </div>
+                    <div nz-form-control class="flex-1">
+                        <nz-input [(ngModel)]="timeTaskForm.groupName"
+                                  name="groupName"
+                                  nzId="groupName"
+                                  [nzSize]="'large'"
+                                  nzPlaceHolder="{{'default.hint.pleaseInput'|translate}}"></nz-input>
+                    </div>
+                </div>
+            </div>
+
+            <div nz-col [nzSpan]="5" class="mb-md">
+                <button nz-button (click)="onSearch()" [nzType]="'primary'" [nzSize]="'large'">
+                    <span>{{'default.btn.searchBtn'|translate}}</span>
+                </button>
+                <button nz-button (click)="onAdd()" [nzType]="'default'" [nzSize]="'large'" *ngIf="helper.btnRole('ATCREATE')">
+                    <span>{{'timeTask.listPage.search.addTask'|translate}}</span>
+                </button>
+            </div>
+
+        </div>
+    </form>
+</nz-card>
+
+<nz-card [nzBordered]="true">
+    <simple-table #timeTaskListTable [url]="tableCfg.url"
+                  [reqMehtod]="'POST'"
+                  [extraParams]="tableCfg.params"
+                  [total]="tableCfg.total"
+                  [columns]="tableCfg.tableColumns"
+                  [resReName]="tableCfg.resReName"
+                  [reqReName]="tableCfg.reqReName"
+                  [isAjax]="tableCfg.isAjax">
+
+        <!-- 启用状态 -->
+        <ng-template st-row="useStateRender" let-item>
+            <ng-container [ngSwitch]="item['useState']">
+                <ng-container *ngIf="helper.btnRole('ATEDITSTATUS')">
+                    <nz-tag *ngSwitchCase="1" [nzColor]="'green'" (click)="onStateClick(item)">
+                        {{helper.dictTrans('ENABLE_STATUS',item['useState'])}}
+                        <i class="anticon anticon-pause"></i>
+                    </nz-tag>
+                    <nz-tag *ngSwitchCase="0" [nzColor]="'red'" (click)="onStateClick(item)">
+                        {{helper.dictTrans('ENABLE_STATUS',item['useState'])}}
+                        <i class="anticon anticon-caret-right"></i>
+                    </nz-tag>
+                </ng-container>
+                <ng-container *ngIf="!helper.btnRole('ATEDITSTATUS')">
+                    <nz-tag *ngSwitchCase="1" [nzColor]="'green'">
+                        {{helper.dictTrans('ENABLE_STATUS',item['useState'])}}
+                    </nz-tag>
+                    <nz-tag *ngSwitchCase="0" [nzColor]="'red'">
+                        {{helper.dictTrans('ENABLE_STATUS',item['useState'])}}
+                    </nz-tag>
+                </ng-container>
+            </ng-container>
+        </ng-template>
+
+        <!-- 运行状态 -->
+        <ng-template st-row="runStateRender" let-item>
+            <ng-container [ngSwitch]="item['runState']">
+                <nz-tag *ngSwitchCase='0' [nzColor]="'green'">{{helper.dictTrans('TASK_RUN_STATE', item['runState'])}}
+                </nz-tag>
+                <nz-tag *ngSwitchCase='1' [nzColor]="'orange'">{{helper.dictTrans('TASK_RUN_STATE', item['runState'])}}
+                </nz-tag>
+                <nz-tag *ngSwitchCase='3' [nzColor]="'red'">{{helper.dictTrans('TASK_RUN_STATE', item['runState'])}}
+                </nz-tag>
+            </ng-container>
+        </ng-template>
+
+        <!-- 上次开始执行时间 -->
+        <ng-template st-row="lastBeginTimeRender" let-item>
+            <span>{{!helper.isEmpty(item['lastBeginTime']) ? (item['lastBeginTime'] | date: 'yyyy-MM-dd HH:mm:ss') : '/'}}</span>
+        </ng-template>
+
+        <!-- 上次结束执行时间 -->
+        <ng-template st-row="lastEndTimeRender" let-item>
+            <span>{{!helper.isEmpty(item['lastEndTime']) ? (item['lastEndTime'] | date: 'yyyy-MM-dd HH:mm:ss') : '/'}}</span>
+        </ng-template>
+
+    </simple-table>
+</nz-card>

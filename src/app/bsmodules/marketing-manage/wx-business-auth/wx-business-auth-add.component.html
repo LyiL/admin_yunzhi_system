@@ -1,0 +1,117 @@
+<nz-card [nzBordered]="false">
+    <form nz-form [formGroup]="wxBusinessAddForm" (ngSubmit)="_submitForm()" class="padding-form">
+        <div nz-row [nzGutter]="50" [nzType]="'flex'" [nzJustify]="'space-between'">
+            <!--新增类型-->
+            <div nz-col [nzSpan]="12">
+                <div nz-form-item nz-row>
+                    <div nz-form-label nz-col  [nzSpan]="6">
+                        <label nz-form-item-required>{{'WxBusinessAuth.editPage.organOrMch'|translate}}</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSpan]="18" nzHasFeedback>
+                        <nz-select nzId="organOrMch"
+                                   name="organOrMch"
+                                   [(ngModel)]="model.organOrMch"
+                                   formControlName="organOrMch"
+                                   (nzSelectChange)="organOrMchSelected($event)"
+                                   nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}">
+                            <nz-option
+                                *ngFor="let cOrganOrMch of organOrMchs"
+                                [nzLabel]="cOrganOrMch.name"
+                                [nzValue]="cOrganOrMch.id">
+                            </nz-option>
+                        </nz-select>
+                        <div nz-form-explain *ngIf="getFormControl('organOrMch').dirty&&getFormControl('organOrMch').hasError('required')">
+                            {{'default.validationMessages.emptyErr'|translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--受理机构/商户名称/服务商名称-->
+            <div nz-col [nzSpan]="12">
+                <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6">
+                        <label nz-form-item-required>{{defaultUser}}</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+                        <search-input [(ngModel)]="model.organNo"
+                                      name="organNo"
+                                      nzId="organNo"
+                                      formControlName="organNo"
+                                      [nzSize]="'large'"
+                                      nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                      [tableCfg]="defaultCfg"
+                                      [displayField]="'name'"
+                                      [(displayValue)]="model.organName"
+                                      (nzSelect)="organNoSelected($event)"
+                                      [winOption]="{zIndex:999}"
+                                      [searchBefore]="onOrganNoSearchBefore.bind(this)"
+                                      [valueField]="defaultField"></search-input>
+                        <div nz-form-explain *ngIf="getFormControl('organNo').dirty&&getFormControl('organNo').hasError('required')">
+                            {{'default.validationMessages.emptyErr'|translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--授权第三方平台-->
+            <div nz-col [nzSpan]="12">
+                <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6">
+                        <label nz-form-item-required>{{'WxBusinessAuth.editPage.platId'|translate}}</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+                        <search-input [(ngModel)]="model.platId"
+                                      name="platId"
+                                      nzId="platId"
+                                      formControlName="platId"
+                                      [nzSize]="'large'"
+                                      nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                      [tableCfg]="platIdCfg"
+                                      [displayField]="'name'"
+                                      [(displayValue)]="model.platName"
+                                      (nzSelect)="platIdSelected($event)"
+                                      [valueField]="'id'"></search-input>
+                        <div nz-form-explain *ngIf="getFormControl('platId').dirty&&getFormControl('platId').hasError('required')">
+                            {{'default.validationMessages.emptyErr'|translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--授权公众账号-->
+            <div nz-col [nzSpan]="12" >
+                <div nz-form-item nz-row>
+                    <div nz-form-label nz-col [nzSm]="6">
+                        <label nz-form-item-required>{{'WxBusinessAuth.editPage.authId'|translate}}</label>
+                    </div>
+                    <div nz-form-control nz-col [nzSm]="18" nzHasFeedback>
+                        <search-input [(ngModel)]="model.authId"
+                                      name="authId"
+                                      nzId="authId"
+                                      formControlName="authId"
+                                      [nzSize]="'large'"
+                                      nzPlaceHolder="{{'default.hint.pleaseChoose'|translate}}"
+                                      [tableCfg]="authIdCfg"
+                                      [displayField]="'name'"
+                                      [(displayValue)]="model.authName"
+                                      (nzSelect)="authIdSelected($event)"
+                                      [valueField]="'id'"></search-input>
+                        <div nz-form-explain *ngIf="getFormControl('authId').dirty&&getFormControl('authId').hasError('required')">
+                            {{'default.validationMessages.emptyErr'|translate}}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div nz-row class="wrap-btn">
+            <button nz-button [nzType]="'primary'" [disabled]="!wxBusinessAddForm.valid" [nzLoading]="isLoadingOne" nzSize="large">
+                <span>{{'default.btn.saveBtn'|translate}}</span>
+            </button>
+            <button nz-button [nzType]="'default'" nzSize="large" (click)="onGoBack()">
+                <span>{{'default.btn.cancelBtn'|translate}}</span>
+            </button>
+        </div>
+    </form>
+</nz-card>
